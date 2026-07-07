@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gastos Mensais — Pedro Jota</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F5F5F3;
+  --surface: #FFFFFF;
+  --surface-2: #F0F0EE;
+  --border: rgba(0,0,0,0.07);
+  --border-s: rgba(0,0,0,0.13);
+  --text: #1A1A1A;
+  --text-2: #5C5C5C;
+  --text-3: #9A9A9A;
+  --green: #1D9E75;
+  --green-bg: #E6F5EF;
+  --green-t: #0D6E52;
+  --red: #D94444;
+  --red-bg: #FCEAEA;
+  --red-t: #9C2E2E;
+  --blue: #185FA5;
+  --blue-bg: #EAF2FC;
+  --blue-t: #0C4480;
+  --amber-bg: #FEF3DC;
+  --amber-t: #7A4A08;
+  --r: 10px;
+  --rs: 6px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141414;
+    --surface: #1E1E1E;
+    --surface-2: #252525;
+    --border: rgba(255,255,255,0.07);
+    --border-s: rgba(255,255,255,0.13);
+    --text: #F0F0F0;
+    --text-2: #A0A0A0;
+    --text-3: #606060;
+    --green-bg: #0D3326;
+    --green-t: #4ECDA4;
+    --red-bg: #3A1515;
+    --red-t: #F08080;
+    --blue-bg: #0C2A4A;
+    --blue-t: #6AACF5;
+    --amber-bg: #3A2800;
+    --amber-t: #F5C060;
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+.topbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.brand-icon {
+  width: 30px;
+  height: 30px;
+  background: var(--green);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.topnav {
+  display: flex;
+  gap: 2px;
+}
+
+.nav-btn {
+  padding: 6px 14px;
+  border-radius: var(--rs);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--text-2);
+  font-family: inherit;
+  transition: all .15s;
+}
+
+.nav-btn:hover { background: var(--surface-2); color: var(--text); }
+.nav-btn.active { background: var(--surface-2); color: var(--text); }
+
+.main {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 24px 24px 48px;
+}
+
+.page { display: none; flex-direction: column; gap: 14px; }
+.page.active { display: flex; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+
+.card-hd {
+  padding: 12px 18px 11px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: .055em;
+}
+
+.card-total {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.mgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.metric {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 14px 16px;
+}
+
+.metric-label { font-size: 12px; color: var(--text-2); margin-bottom: 5px; }
+.metric-value { font-size: 21px; font-weight: 600; color: var(--text); }
+.metric-value.pos { color: var(--green); }
+.metric-value.neg { color: var(--red); }
+
+.saldo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 12px 18px 14px;
+}
+
+.saldo-item {
+  background: var(--surface-2);
+  border-radius: var(--rs);
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+}
+
+.saldo-label { font-size: 11px; color: var(--text-2); margin-bottom: 3px; }
+.saldo-val { font-size: 16px; font-weight: 600; color: var(--text); }
+
+.frow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--border);
+  gap: 12px;
+}
+.frow:last-child { border-bottom: none; }
+
+.flabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text);
+  flex: 1;
+}
+
+.fright { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.fval { font-size: 14px; font-weight: 500; color: var(--text); }
+.fmuted { font-size: 13px; color: var(--text-3); font-style: italic; }
+
+input[type=text] {
+  width: 130px;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border: 1px solid var(--border-s);
+  border-radius: var(--rs);
+  background: var(--surface-2);
+  color: var(--text);
+  font-family: inherit;
+  transition: border-color .15s;
+}
+
+input[type=text]:focus { outline: none; border-color: var(--green); }
+input[type=text]::placeholder { color: var(--text-3); font-weight: 400; }
+
+.badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 20px;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.b-auto { background: var(--blue-bg); color: var(--blue-t); }
+.b-rep  { background: var(--amber-bg); color: var(--amber-t); }
+
+.chk-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--text-2);
+  user-select: none;
+}
+
+input[type=checkbox] {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  accent-color: var(--green);
+}
+
+.paid { opacity: .38; }
+
+.prog-wrap {
+  background: var(--surface-2);
+  border-radius: 20px;
+  height: 5px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.prog-bar {
+  height: 5px;
+  border-radius: 20px;
+  background: var(--green);
+  transition: width .4s ease;
+}
+
+.prog-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2px;
+}
+
+.alert {
+  padding: 10px 14px;
+  border-radius: var(--rs);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.a-warn { background: var(--amber-bg); color: var(--amber-t); }
+.a-ok   { background: var(--green-bg); color: var(--green-t); }
+.a-info { background: var(--blue-bg);  color: var(--blue-t); }
+
+.btn-row { display: flex; gap: 10px; justify-content: flex-end; padding: 12px 18px 6px; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--rs);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--border-s);
+  background: transparent;
+  color: var(--text);
+  font-family: inherit;
+  transition: all .15s;
+}
+.btn:hover { background: var(--surface-2); }
+.btn-p { background: var(--text); color: var(--surface); border-color: var(--text); }
+.btn-p:hover { opacity: .82; }
+
+/* Fatura categories */
+.cat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  user-select: none;
+  transition: background .1s;
+}
+.cat-row:hover { background: var(--surface-2); }
+.cat-row:last-child { border-bottom: none; }
+.cat-name { font-size: 14px; font-weight: 500; color: var(--text); display: flex; align-items: center; gap: 8px; }
+.cat-chev { font-size: 12px; color: var(--text-3); transition: transform .2s; display: inline-block; }
+.cat-chev.open { transform: rotate(180deg); }
+.cat-val { font-size: 14px; font-weight: 500; color: var(--text); }
+.cat-items { display: none; background: var(--surface-2); }
+.cat-items.open { display: block; }
+.cat-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 7px 18px 7px 30px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-2);
+}
+.cat-item:last-child { border-bottom: none; }
+
+/* History table */
+.hist-table { width: 100%; border-collapse: collapse; }
+.hist-table th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--border);
+}
+.hist-table td { padding: 11px 18px; border-bottom: 1px solid var(--border); font-size: 13px; }
+.hist-table tr:last-child td { border-bottom: none; }
+.hist-table tbody tr:hover td { background: var(--surface-2); }
+.pill { display: inline-flex; padding: 3px 9px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+.dp { font-size: 11px; margin-left: 5px; font-weight: 500; color: var(--green-t); }
+.dn { font-size: 11px; margin-left: 5px; font-weight: 500; color: var(--red-t); }
+
+/* Charts section */
+.charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 600px) {
+  .charts-grid { grid-template-columns: 1fr; }
+  .topnav .nav-btn { padding: 6px 10px; font-size: 12px; }
+  .main { padding: 14px 14px 40px; }
+  .mgrid { grid-template-columns: 1fr 1fr; }
+  .saldo-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.pie-wrap {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 16px 18px;
+  flex-wrap: wrap;
+}
+
+.pie-canvas-wrap { flex: 0 0 180px; }
+
+.pie-legend {
+  flex: 1;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pie-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+.pie-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+#toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 10px 18px;
+  background: var(--text);
+  color: var(--surface);
+  border-radius: var(--rs);
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all .2s;
+  pointer-events: none;
+  z-index: 999;
+}
+#toast.show { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-icon">₢</div>
+    Gastos Mensais
+  </div>
+  <nav class="topnav">
+    <button class="nav-btn active" onclick="showTab('maio')" id="tab-maio">Maio</button>
+    <button class="nav-btn" onclick="showTab('junho')" id="tab-junho">Junho</button>
+    <button class="nav-btn" onclick="showTab('julho')" id="tab-julho">Julho</button>
+    <button class="nav-btn" onclick="showTab('graficos')" id="tab-graficos">Gráficos</button>
+    <button class="nav-btn" onclick="showTab('historico')" id="tab-historico">Histórico</button>
+  </nav>
+</header>
+
+<main class="main">
+  <div id="page-maio"     class="page active"></div>
+  <div id="page-junho"    class="page"></div>
+  <div id="page-julho"    class="page"></div>
+  <div id="page-graficos" class="page"></div>
+  <div id="page-historico"class="page"></div>
+</main>
+
+<div id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+/* ─── helpers ─── */
+const SUPA_URL = 'https://hzfvsohazcqgwpupmgju.supabase.co';
+const SUPA_KEY = 'sb_publishable_pwloxHbQF_HVlepTgoTnSA_W04qWLR8';
+const SUPA_HDR = { 'Content-Type': 'application/json', 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY };
+const fBR = n => 'R$ ' + Number(n).toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2});
+const pBR = s => typeof s === 'number' ? s : parseFloat(String(s).replace(/\./g,'').replace(',','.')) || 0;
+const fD  = n => (n >= 0 ? '+' : '') + Number(n).toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2});
+
+const TABS = ['maio','junho','julho','graficos','historico'];
+
+function showTab(t) {
+  TABS.forEach(n => {
+    document.getElementById('tab-'+n).classList.toggle('active', n===t);
+    document.getElementById('page-'+n).classList.toggle('active', n===t);
+  });
+  if (t === 'historico') { delete document.getElementById('page-historico').dataset.built; buildHist(); }
+  if (t === 'graficos'  && !document.getElementById('page-graficos').dataset.built)  buildGraficos();
+  if (t === 'junho'     && !document.getElementById('page-junho').dataset.built)     buildJunho();
+  if (t === 'julho'     && !document.getElementById('page-julho').dataset.built)     buildJulho();
+}
+
+function calc(f) {
+  const tot  = f.salario + f.vr + f.vho + f.paula;
+  const desp = f.aluguel + f.cond + f.iptu + f.luz + f.internet + f.terapia;
+  return { tot, desp, total: desp + f.cartao, sobrou: tot - desp - f.cartao };
+}
+
+function summaryHtml(f, saldoInicio, saldoFim, saldoLabel) {
+  const c = calc(f), sc = c.sobrou >= 0 ? 'pos' : 'neg';
+  let saldoHtml = '';
+  if (saldoInicio != null) {
+    const s2l = saldoLabel || (saldoFim != null ? 'Saldo fim do mês' : 'Saldo atual');
+    const s2v = saldoFim != null ? fBR(saldoFim) : fBR(28832.30);
+    saldoHtml = `<div class="saldo-grid">
+      <div class="saldo-item"><div class="saldo-label">Saldo início do mês</div><div class="saldo-val">${fBR(saldoInicio)}</div></div>
+      <div class="saldo-item"><div class="saldo-label">${s2l}</div><div class="saldo-val">${s2v}</div></div>
+    </div>`;
+  }
+  return `<div class="mgrid">
+    <div class="metric"><div class="metric-label">Salário total</div><div class="metric-value">${fBR(c.tot)}</div></div>
+    <div class="metric"><div class="metric-label">Despesas fixas</div><div class="metric-value">${fBR(c.desp)}</div></div>
+    <div class="metric"><div class="metric-label">Fatura cartão</div><div class="metric-value">${fBR(f.cartao)}</div></div>
+    <div class="metric"><div class="metric-label">Sobrou no mês</div><div class="metric-value ${sc}">${fBR(c.sobrou)}</div></div>
+  </div>${saldoHtml}`;
+}
+
+function inputRow(label, id, val, badge, ev) {
+  const bc = badge === 'auto' ? 'b-auto' : 'b-rep';
+  const bl = badge === 'auto' ? 'auto' : 'repetido';
+  return `<div class="frow"><span class="flabel">${label} <span class="badge ${bc}">${bl}</span></span>
+    <input type="text" id="${id}" value="${val}" oninput="${ev}" /></div>`;
+}
+
+function checkRow(key, label, val, pago, edit, ph, prefix, ev) {
+  const right = edit
+    ? `<input type="text" id="${prefix}v-${key}" value="${val}" placeholder="${ph||''}" oninput="${ev}" style="width:120px" />`
+    : `<span class="fval">${val ? 'R$ '+val : ''}</span>`;
+  return `<div class="frow${pago?' paid':''}" id="${prefix}row-${key}">
+    <span class="flabel">${label}</span>
+    <div class="fright">${right}
+      <label class="chk-label"><input type="checkbox" id="${prefix}chk-${key}" ${pago?'checked':''} onchange="${ev}" /> pago</label>
+    </div>
+  </div>`;
+}
+
+function progCard(lblId, pctId, barId, progId) {
+  return `<div class="card"><div class="card-hd"><span class="card-title">Progresso dos pagamentos</span></div>
+    <div style="padding:12px 18px 14px">
+      <div class="prog-meta">
+        <span id="${lblId}" style="font-size:13px;color:var(--text-2)"></span>
+        <span id="${pctId}" style="font-size:13px;font-weight:600"></span>
+      </div>
+      <div class="prog-wrap"><div class="prog-bar" id="${barId}" style="width:0%"></div></div>
+    </div>
+  </div>`;
+}
+
+function updProg(contas, prefix, alertId, lId, pId, bId) {
+  let paid = 0; const pend = [];
+  contas.forEach(c => {
+    const chk = document.getElementById(prefix+'chk-'+c.key);
+    const row = document.getElementById(prefix+'row-'+c.key);
+    if (chk?.checked) { paid++; row?.classList.add('paid'); }
+    else { row?.classList.remove('paid'); pend.push(c.label); }
+  });
+  const pct = Math.round(paid / contas.length * 100);
+  document.getElementById(lId).textContent = paid + ' de ' + contas.length + ' contas pagas';
+  document.getElementById(pId).textContent = pct + '%';
+  document.getElementById(bId).style.width = pct + '%';
+  const al = document.getElementById(alertId);
+  if (pend.length > 0) { al.style.display='block'; al.className='alert a-warn'; al.textContent='Pendente: '+pend.join(' · '); }
+  else { al.style.display='block'; al.className='alert a-ok'; al.textContent='Todas as contas foram pagas.'; }
+}
+
+/* ─── FATURA JUNHO ─── */
+const FATURA_JUNHO = {
+  total: 7692.21,
+  mes: 'Junho 2026',
+  venc: '07/07/2026',
+  categorias: [
+    { id:'transporte', nome:'Transporte', total:274.85, itens:[
+      {nome:'99 Ride (×7)', val:161.05}, {nome:'Uber (×6)', val:108.10}, {nome:'Metrô BH', val:5.80}
+    ]},
+    { id:'locacao', nome:'Locação de carros', total:904.37, itens:[
+      {nome:'MOVIDA RESERVAS', val:634.68}, {nome:'LOCALIZA RAC', val:269.69}
+    ]},
+    { id:'mercado', nome:'Mercado', total:896.07, itens:[
+      {nome:'SUP EPA DEZESSEIS (×10)', val:540.83}, {nome:'Supermercados BH (×3)', val:210.07},
+      {nome:'Assaí Atacadista', val:142.15}, {nome:'SupermercadoSerra', val:3.02}
+    ]},
+    { id:'comida', nome:'Comida e bebida', total:1370.36, itens:[
+      {nome:'Tom Cozinha de Herança (×2)', val:498.43}, {nome:'Casa de Chá Filomena', val:228.80},
+      {nome:'IFD Lifebox BH', val:113.81}, {nome:'Íberico Empreendimento', val:106.06},
+      {nome:'Peixe Frito (×3)', val:112.50}, {nome:'IFD Mori Mori Don', val:64.85},
+      {nome:'Cervejaria Odeon (×2)', val:72.00}, {nome:'Mister Rock Bar (×2)', val:66.00},
+      {nome:'Distribuidora 1001', val:47.80}, {nome:'Armazém e Empório', val:30.40},
+      {nome:'CGME Casa de Lanches', val:31.50}, {nome:'Bar Ze Luiz', val:15.00},
+      {nome:'Araujo Loja', val:33.99}, {nome:'Divino Fogão', val:29.90},
+      {nome:'APDQ Mercado (×2)', val:24.00}, {nome:'Mercado Central', val:16.00},
+      {nome:'Mayhuna Miyahara', val:6.00}
+    ]},
+    { id:'lazer', nome:'Lazer e entretenimento', total:526.48, itens:[
+      {nome:'Ticketmaster (parcela 03/03)', val:472.00}, {nome:'LEITURA', val:52.80},
+      {nome:'Divipaypayments', val:9.90}
+    ]},
+    { id:'hospedagem', nome:'Viagem e hospedagem', total:304.91, itens:[
+      {nome:'AIRBNB (parcela 01/06)', val:304.91}
+    ]},
+    { id:'combustivel', nome:'Combustível', total:263.35, itens:[
+      {nome:'Posto Vila', val:113.06}, {nome:'Posto Serra do Cipó', val:100.00},
+      {nome:'Posto Santo Agostinho', val:50.29}
+    ]},
+    { id:'assinaturas', nome:'Assinaturas', total:395.67, itens:[
+      {nome:'ANTHROPIC* CLAUDE SUB', val:110.00}, {nome:'LinkedIn', val:104.98},
+      {nome:'PlayStation', val:99.89}, {nome:'Spotify', val:40.90},
+      {nome:'Apple.com (×2)', val:40.80}
+    ]},
+    { id:'trabalho', nome:'Ferramentas de trabalho', total:1063.31, itens:[
+      {nome:'FIGMA ($192 USD)', val:1023.63}, {nome:'IOF Internacional (×2)', val:39.68}
+    ]},
+    { id:'mobilidade', nome:'Mobilidade urbana', total:120.44, itens:[
+      {nome:'JETSHR (×15)', val:110.45}, {nome:'URENTCAR', val:9.99}
+    ]},
+    { id:'compras', nome:'Compras online', total:165.46, itens:[
+      {nome:'Mercado*MagazinePro', val:151.50}, {nome:'EC*MELIMAIS', val:9.90},
+      {nome:'FAZDigitalBH (×2)', val:11.22}
+    ]},
+    { id:'outros', nome:'Outros', total:406.79, itens:[
+      {nome:'Bike Cipó', val:170.00}, {nome:'BYE GAS', val:120.00},
+      {nome:'66061806Tatiana', val:34.00}, {nome:'MercadoLivre (compra/estorno)', val:0},
+    ]}
+  ]
+};
+
+function faturaHtml(fat) {
+  const rows = fat.categorias.map(c => `
+    <div>
+      <div class="cat-row" onclick="toggleCat('${c.id}')">
+        <span class="cat-name">${c.nome} <span class="cat-chev" id="chev-${c.id}">▾</span></span>
+        <span class="cat-val">${fBR(c.total)}</span>
+      </div>
+      <div class="cat-items" id="catitems-${c.id}">
+        ${c.itens.map(i => `<div class="cat-item"><span>${i.nome}</span><span>${fBR(i.val)}</span></div>`).join('')}
+      </div>
+    </div>`).join('');
+  return `<div class="card">
+    <div class="card-hd">
+      <span class="card-title">Fatura Inter — ${fat.mes} (venc. ${fat.venc})</span>
+      <span class="card-total">${fBR(fat.total)}</span>
+    </div>
+    ${rows}
+  </div>`;
+}
+
+function toggleCat(id) {
+  document.getElementById('catitems-'+id)?.classList.toggle('open');
+  const ch = document.getElementById('chev-'+id);
+  if (ch) ch.classList.toggle('open');
+}
+
+/* ─── MAIO ─── */
+const MAIO_R = [
+  {id:'m-salario', label:'Salário (Itaú — recebido em maio)', val:'13.981,77', badge:'auto'},
+  {id:'m-vr',      label:'Vale refeição',                    val:'990,00',     badge:'rep'},
+  {id:'m-vho',     label:'Vale home office',                 val:'100,00',     badge:'rep'},
+  {id:'m-paula',   label:'Paula',                            val:'1.618,13',   badge:'auto'},
+];
+const MAIO_D = [
+  {id:'m-aluguel',  label:'Aluguel',           val:'1.883,11', badge:'auto'},
+  {id:'m-cond',     label:'Condomínio',         val:'563,19',   badge:'auto'},
+  {id:'m-iptu',     label:'IPTU',               val:'305,76',   badge:'auto'},
+  {id:'m-luz',      label:'Luz',                val:'323,67',   badge:'auto'},
+  {id:'m-internet', label:'Internet + celular', val:'359,13',   badge:'auto'},
+  {id:'m-terapia',  label:'Terapia',            val:'1.360,00', badge:'auto'},
+  {id:'m-cartao',   label:'Fatura cartão Inter',val:'5.020,93', badge:'auto'},
+];
+function getMaio() {
+  const g = id => pBR(document.getElementById(id)?.value || '0');
+  return { salario:g('m-salario'), vr:g('m-vr'), vho:g('m-vho'), paula:g('m-paula'),
+    aluguel:g('m-aluguel'), cond:g('m-cond'), iptu:g('m-iptu'), luz:g('m-luz'),
+    internet:g('m-internet'), terapia:g('m-terapia'), cartao:g('m-cartao') };
+}
+function recalcMaio() {
+  document.getElementById('maio-summary').innerHTML = summaryHtml(getMaio(), 47499.22, 38466.06, 'Saldo fim do mês');
+}
+
+(function buildMaio() {
+  const pg = document.getElementById('page-maio');
+  pg.dataset.built = '1';
+  pg.innerHTML = `
+    <div id="maio-summary"></div>
+    <div class="card"><div class="card-hd"><span class="card-title">Receitas</span></div>
+      ${MAIO_R.map(f => inputRow(f.label,f.id,f.val,f.badge,'recalcMaio()')).join('')}
+    </div>
+    <div class="card"><div class="card-hd"><span class="card-title">Despesas</span></div>
+      ${MAIO_D.map(f => inputRow(f.label,f.id,f.val,f.badge,'recalcMaio()')).join('')}
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-p" onclick="salvar('maio')">Salvar maio</button>
+    </div>
+    <div id="maio-msg" style="display:none"></div>`;
+  recalcMaio();
+})();
+
+/* ─── JUNHO ─── */
+const JUNHO_C = [
+  {key:'aluguel',  label:'Aluguel',           val:'1.883,11', pago:true,  edit:false},
+  {key:'cond',     label:'Condomínio',         val:'864,73',   pago:true,  edit:false},
+  {key:'iptu',     label:'IPTU',               val:'305,76',   pago:true,  edit:false},
+  {key:'internet', label:'Internet + celular', val:'363,77',   pago:true,  edit:false},
+  {key:'luz',      label:'Luz',                val:'393,94',   pago:true,  edit:false},
+  {key:'terapia',  label:'Terapia',            val:'',         pago:false, edit:true, ph:'pendente'},
+  {key:'cartao',   label:'Fatura cartão Inter',val:'6.148,47', pago:true,  edit:false},
+];
+const JUNHO_R = [
+  {id:'j-salario', label:'Salário (Itaú — recebido em junho)', val:'13.981,77', badge:'auto'},
+  {id:'j-vr',      label:'Vale refeição',                      val:'990,00',    badge:'rep'},
+  {id:'j-vho',     label:'Vale home office',                   val:'100,00',    badge:'rep'},
+  {id:'j-paula',   label:'Paula',                              val:'1.987,47',  badge:'auto'},
+];
+function getJunho() {
+  const g = id => pBR(document.getElementById(id)?.value || '0');
+  const ter = document.getElementById('jv-terapia');
+  return { salario:g('j-salario'), vr:g('j-vr'), vho:g('j-vho'), paula:g('j-paula'),
+    aluguel:1883.11, cond:864.73, iptu:305.76, luz:393.94, internet:363.77,
+    terapia: ter ? pBR(ter.value) : 0, cartao:6148.47 };
+}
+function updJunho() {
+  updProg(JUNHO_C,'j','junho-alert','j-lbl','j-pct','j-bar');
+  document.getElementById('junho-summary').innerHTML = summaryHtml(getJunho(), 47499.22, 38466.06, 'Saldo fim do mês');
+}
+function buildJunho() {
+  const pg = document.getElementById('page-junho');
+  pg.dataset.built = '1';
+  pg.innerHTML = `
+    ${progCard('j-lbl','j-pct','j-bar')}
+    <div id="junho-summary"></div>
+    <div class="card"><div class="card-hd"><span class="card-title">Receitas</span></div>
+      ${JUNHO_R.map(f => inputRow(f.label,f.id,f.val,f.badge,'updJunho()')).join('')}
+    </div>
+    <div class="card"><div class="card-hd"><span class="card-title">Contas de junho</span></div>
+      ${JUNHO_C.map(c => checkRow(c.key,c.label,c.val,c.pago,c.edit,c.ph,'j','updJunho()')).join('')}
+    </div>
+    <div id="junho-alert" style="display:none"></div>
+    <div class="btn-row"><button class="btn btn-p" onclick="salvar('junho')">Salvar junho</button></div>
+    <div id="junho-msg" style="display:none"></div>`;
+  updJunho();
+}
+
+/* ─── JULHO ─── */
+const JULHO_C = [
+  {key:'aluguel',  label:'Aluguel',           val:'1.883,11', pago:true,  edit:false},
+  {key:'cond',     label:'Condomínio',         val:'',         pago:false, edit:true, ph:'aguardando boleto'},
+  {key:'iptu',     label:'IPTU',               val:'305,76',   pago:true,  edit:false},
+  {key:'luz',      label:'Luz',                val:'393,94',   pago:true,  edit:false},
+  {key:'internet', label:'Internet + celular', val:'363,02',   pago:true,  edit:false},
+  {key:'terapia',  label:'Terapia',            val:'',         pago:false, edit:true, ph:'pendente'},
+  {key:'cartao',   label:'Fatura cartão Inter',val:'7.692,21', pago:true,  edit:false},
+];
+const JULHO_R = [
+  {id:'jl-salario', label:'Salário (Itaú — recebido em junho)', val:'13.981,77', badge:'auto'},
+  {id:'jl-vr',      label:'Vale refeição',                      val:'990,00',    badge:'rep'},
+  {id:'jl-vho',     label:'Vale home office',                   val:'100,00',    badge:'rep'},
+  {id:'jl-paula',   label:'Paula (parcial até 07/07)',          val:'1.074,90',  badge:'auto'},
+];
+function getJulho() {
+  const g = id => pBR(document.getElementById(id)?.value || '0');
+  const cond = document.getElementById('jlv-cond');
+  const ter  = document.getElementById('jlv-terapia');
+  return { salario:g('jl-salario'), vr:g('jl-vr'), vho:g('jl-vho'), paula:g('jl-paula'),
+    aluguel:1883.11, cond: cond?pBR(cond.value):0, iptu:305.76, luz:393.94,
+    internet:363.02, terapia: ter?pBR(ter.value):0, cartao:7692.21 };
+}
+function updJulho() {
+  updProg(JULHO_C,'jl','julho-alert','jl-lbl','jl-pct','jl-bar');
+  document.getElementById('julho-summary').innerHTML = summaryHtml(getJulho(), 38476.06, null, 'Saldo atual (07/07)');
+}
+function buildJulho() {
+  const pg = document.getElementById('page-julho');
+  pg.dataset.built = '1';
+  pg.innerHTML = `
+    <div class="alert a-info">Julho parcial — mês em andamento. Condomínio e terapia pendentes.</div>
+    ${progCard('jl-lbl','jl-pct','jl-bar')}
+    <div id="julho-summary"></div>
+    <div class="card"><div class="card-hd"><span class="card-title">Receitas</span></div>
+      ${JULHO_R.map(f => inputRow(f.label,f.id,f.val,f.badge,'updJulho()')).join('')}
+    </div>
+    <div class="card"><div class="card-hd"><span class="card-title">Contas de julho</span></div>
+      ${JULHO_C.map(c => checkRow(c.key,c.label,c.val,c.pago,c.edit,c.ph,'jl','updJulho()')).join('')}
+    </div>
+    <div id="julho-alert" style="display:none"></div>
+    ${faturaHtml(FATURA_JUNHO)}
+    <div class="card">
+      <div class="card-hd">
+        <span class="card-title">Fatura por categoria — Junho 2026</span>
+        <span class="card-total">${fBR(FATURA_JUNHO.total)}</span>
+      </div>
+      <div class="pie-wrap">
+        <div class="pie-canvas-wrap"><canvas id="pie-chart" height="180"></canvas></div>
+        <div class="pie-legend" id="pie-legend"></div>
+      </div>
+    </div>
+    <div class="btn-row"><button class="btn btn-p" onclick="salvar('julho')">Salvar julho</button></div>
+    <div id="julho-msg" style="display:none"></div>`;
+  updJulho();
+  buildPieChart();
+}
+
+function buildPieChart() {
+  const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const borderCol = isDark ? '#1E1E1E' : '#FFFFFF';
+  const CATS = FATURA_JUNHO.categorias;
+  const total = CATS.reduce((s,c) => s+c.total, 0);
+  pieChart = new Chart(document.getElementById('pie-chart').getContext('2d'), {
+    type: 'doughnut',
+    data: {
+      labels: CATS.map(c => c.nome),
+      datasets: [{ data: CATS.map(c => c.total), backgroundColor: PALETTE,
+        borderWidth: 2, borderColor: borderCol, hoverOffset: 6 }]
+    },
+    options: {
+      responsive: true, cutout: '56%',
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => {
+          const pct = ((ctx.parsed / total)*100).toFixed(1);
+          return ' '+fBR(ctx.parsed)+' ('+pct+'%)';
+        }}}
+      }
+    }
+  });
+  document.getElementById('pie-legend').innerHTML = CATS.map((c,i) => {
+    const pct = ((c.total/total)*100).toFixed(1);
+    return `<div class="pie-legend-item">
+      <div class="pie-dot" style="background:${PALETTE[i]}"></div>
+      <span>${c.nome} <strong style="color:var(--text)">${pct}%</strong></span>
+    </div>`;
+  }).join('');
+}
+
+/* ─── GRÁFICOS ─── */
+const PALETTE = ['#1D9E75','#185FA5','#BA7517','#E24B4A','#534AB7','#639922',
+  '#D85A30','#D4537E','#888780','#378ADD','#0F6E56','#854F0B'];
+
+const MESES_GRAFICO = [
+  {mes:'Maio 2026',  despesasFixas:5795.06, cartao:5020.93},
+  {mes:'Junho 2026', despesasFixas:5810.31, cartao:6148.47},
+  {mes:'Julho 2026', despesasFixas:4939.04, cartao:7692.21},
+];
+
+let barChart = null, pieChart = null;
+
+function buildGraficos() {
+  const pg = document.getElementById('page-graficos');
+  pg.dataset.built = '1';
+  pg.innerHTML = `
+    <div class="card">
+      <div class="card-hd"><span class="card-title">Gastos totais por mês</span></div>
+      <div style="padding:16px 18px"><canvas id="bar-chart" height="220"></canvas></div>
+    </div>
+    `;
+
+  const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const textCol = isDark ? 'rgba(240,240,240,0.6)' : 'rgba(0,0,0,0.45)';
+  const gridCol = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)';
+  const borderCol = isDark ? '#1E1E1E' : '#FFFFFF';
+
+  barChart = new Chart(document.getElementById('bar-chart').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: MESES_GRAFICO.map(m => m.mes),
+      datasets: [
+        { label:'Despesas fixas', data: MESES_GRAFICO.map(m => m.despesasFixas),
+          backgroundColor:'#185FA5', borderRadius:5, borderSkipped:false },
+        { label:'Fatura cartão',  data: MESES_GRAFICO.map(m => m.cartao),
+          backgroundColor:'#1D9E75', borderRadius:5, borderSkipped:false },
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position:'bottom', labels:{ color:textCol, boxWidth:12, boxHeight:12,
+          borderRadius:6, useBorderRadius:true, padding:16, font:{size:12} } },
+        tooltip: { callbacks:{ label: ctx => ' '+ctx.dataset.label+': '+fBR(ctx.parsed.y) } }
+      },
+      scales: {
+        x: { ticks:{color:textCol, font:{size:12}}, grid:{display:false}, border:{display:false} },
+        y: { ticks:{color:textCol, font:{size:11}, callback: v => 'R$ '+Number(v).toLocaleString('pt-BR',{maximumFractionDigits:0})},
+          grid:{color:gridCol}, border:{display:false} }
+      }
+    }
+  });
+
+}
+
+/* ─── STORAGE (Supabase) ─── */
+async function loadH() {
+  try {
+    const res = await fetch(SUPA_URL + '/rest/v1/meses?select=id,dados&order=id', { headers: SUPA_HDR });
+    if (!res.ok) return [];
+    const rows = await res.json();
+    return rows.map(r => r.dados);
+  } catch(e) { return []; }
+}
+
+async function saveH(entry) {
+  await fetch(SUPA_URL + '/rest/v1/meses', {
+    method: 'POST',
+    headers: { ...SUPA_HDR, 'Prefer': 'resolution=merge-duplicates' },
+    body: JSON.stringify({ id: entry.mesKey, dados: entry, atualizado_em: new Date().toISOString() })
+  });
+}
+
+async function salvar(mes) {
+  let fields, key, label;
+  if (mes==='maio')       { fields=getMaio();  key='2026-05'; label='Maio 2026'; }
+  else if (mes==='junho') { fields=getJunho(); key='2026-06'; label='Junho 2026'; }
+  else                    { fields=getJulho(); key='2026-07'; label='Julho 2026'; }
+  const entry = { mes:label, mesKey:key, fields };
+  const msg = document.getElementById(mes+'-msg');
+  if (msg) { msg.style.display='block'; msg.className='alert a-info'; msg.textContent='Salvando...'; }
+  await saveH(entry);
+  toast(label+' salvo.');
+  if (msg) { msg.className='alert a-ok'; msg.textContent='Salvo com sucesso.'; setTimeout(()=>msg.style.display='none',2500); }
+}
+
+/* ─── HISTÓRICO ─── */
+let ci = null;
+async function buildHist() {
+  const pg = document.getElementById('page-historico');
+  pg.dataset.built = '1';
+  pg.innerHTML = `<div class="alert a-info">Carregando dados...</div>`;
+  const h = await loadH();
+  if (h.length===0) { pg.innerHTML=`<div class="alert a-info">Nenhum mês salvo ainda. Salve maio para começar.</div>`; return; }
+  const rows = h.map((e,i) => {
+    const c = calc(e.fields);
+    const bg  = c.sobrou>=0 ? '#E6F5EF' : '#FCEAEA';
+    const col = c.sobrou>=0 ? '#0D6E52' : '#9C2E2E';
+    let diff = '';
+    if (i>0) { const d=c.sobrou-calc(h[i-1].fields).sobrou; diff=`<span class="${d>=0?'dp':'dn'}">${fD(d)}</span>`; }
+    return `<tr><td style="font-weight:500">${e.mes}</td><td>${fBR(c.tot)}</td><td>${fBR(c.desp)}</td>
+      <td>${fBR(e.fields.cartao)}</td>
+      <td><span class="pill" style="background:${bg};color:${col}">${fBR(c.sobrou)}</span>${diff}</td></tr>`;
+  }).join('');
+  const chartHtml = h.length>=2 ? `<div class="card" style="margin-top:14px">
+    <div class="card-hd"><span class="card-title">Evolução do saldo restante</span></div>
+    <div style="padding:16px 18px"><canvas id="hist-chart" height="180"></canvas></div>
+  </div>` : '';
+  pg.innerHTML = `<div class="card">
+    <div class="card-hd"><span class="card-title">Meses salvos</span></div>
+    <table class="hist-table">
+      <thead><tr><th>Mês</th><th>Salário</th><th>Despesas</th><th>Cartão</th><th>Sobrou</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+  </div>${chartHtml}`;
+  if (h.length>=2) {
+    const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const textCol = isDark?'rgba(240,240,240,0.6)':'rgba(0,0,0,0.45)';
+    const gridCol = isDark?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.06)';
+    if (ci) ci.destroy();
+    ci = new Chart(document.getElementById('hist-chart').getContext('2d'), {
+      type: 'line',
+      data: { labels: h.map(x=>x.mes), datasets: [{
+        label:'Sobrou', data: h.map(x=>Math.round(calc(x.fields).sobrou*100)/100),
+        tension:.35, fill:true, borderColor:'#1D9E75', backgroundColor:'rgba(29,158,117,.08)',
+        pointRadius:5, pointBackgroundColor:'#1D9E75', pointBorderColor:'#fff', pointBorderWidth:2
+      }]},
+      options: { responsive:true, plugins:{legend:{display:false}},
+        scales:{ y:{ticks:{callback:v=>'R$ '+v.toLocaleString('pt-BR'),color:textCol},grid:{color:gridCol},border:{display:false}},
+          x:{ticks:{color:textCol},grid:{display:false},border:{display:false}} } }
+    });
+  }
+}
+
+/* ─── TOAST ─── */
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2500);
+}
+</script>
+</body>
+</html>
