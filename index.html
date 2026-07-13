@@ -732,7 +732,7 @@ function buildJunho() {
 /* ─── JULHO ─── */
 const JULHO_C = [
   {key:'aluguel',  label:'Aluguel',           val:'1.883,11', pago:true,  edit:false},
-  {key:'cond',     label:'Condomínio',         val:'',         pago:false, edit:true, ph:'aguardando boleto'},
+  {key:'cond',     label:'Condomínio',         val:'912,28',   pago:true,  edit:false},
   {key:'iptu',     label:'IPTU',               val:'305,76',   pago:true,  edit:false},
   {key:'luz',      label:'Luz',                val:'393,94',   pago:true,  edit:false},
   {key:'internet', label:'Internet + celular', val:'363,02',   pago:true,  edit:false},
@@ -750,7 +750,7 @@ function getJulho() {
   const cond = document.getElementById('jlv-cond');
   const ter  = document.getElementById('jlv-terapia');
   return { salario:g('jl-salario'), vr:g('jl-vr'), vho:g('jl-vho'), paula:g('jl-paula'),
-    aluguel:1883.11, cond: cond?pBR(cond.value):0, iptu:305.76, luz:393.94,
+    aluguel:1883.11, cond:912.28, iptu:305.76, luz:393.94,
     internet:363.02, terapia: ter?pBR(ter.value):0, cartao:7692.21 };
 }
 function updJulho() {
