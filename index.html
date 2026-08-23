@@ -7,30 +7,29 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
+:root{
   --bg:#F5F5F3;--surface:#FFFFFF;--surface-2:#F0F0EE;
   --border:rgba(0,0,0,0.07);--border-s:rgba(0,0,0,0.13);
   --text:#1A1A1A;--text-2:#5C5C5C;--text-3:#9A9A9A;
   --green:#1D9E75;--green-bg:#E6F5EF;--green-t:#0D6E52;
   --red:#D94444;--red-bg:#FCEAEA;--red-t:#9C2E2E;
   --blue:#185FA5;--blue-bg:#EAF2FC;--blue-t:#0C4480;
-  --amber-bg:#FEF3DC;--amber-t:#7A4A08;
-  --r:10px;--rs:6px;
+  --amber-bg:#FEF3DC;--amber-t:#7A4A08;--r:10px;--rs:6px;
 }
-@media(prefers-color-scheme:dark){
-  :root{--bg:#141414;--surface:#1E1E1E;--surface-2:#252525;
+@media(prefers-color-scheme:dark){:root{
+  --bg:#141414;--surface:#1E1E1E;--surface-2:#252525;
   --border:rgba(255,255,255,0.07);--border-s:rgba(255,255,255,0.13);
   --text:#F0F0F0;--text-2:#A0A0A0;--text-3:#606060;
   --green-bg:#0D3326;--green-t:#4ECDA4;--red-bg:#3A1515;--red-t:#F08080;
-  --blue-bg:#0C2A4A;--blue-t:#6AACF5;--amber-bg:#3A2800;--amber-t:#F5C060;}
-}
+  --blue-bg:#0C2A4A;--blue-t:#6AACF5;--amber-bg:#3A2800;--amber-t:#F5C060;
+}}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-height:100vh}
 .topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px;color:var(--text)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px}
 .brand-icon{width:30px;height:30px;background:var(--green);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:15px}
 .topnav{display:flex;gap:2px;overflow-x:auto}
-.nav-btn{padding:6px 12px;border-radius:var(--rs);font-size:13px;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--text-2);font-family:inherit;transition:all .15s;white-space:nowrap}
+.nav-btn{padding:6px 12px;border-radius:var(--rs);font-size:13px;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--text-2);font-family:inherit;white-space:nowrap;transition:all .15s}
 .nav-btn:hover{background:var(--surface-2);color:var(--text)}
 .nav-btn.active{background:var(--surface-2);color:var(--text)}
 .main{max-width:820px;margin:0 auto;padding:24px 24px 48px}
@@ -44,8 +43,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .metric{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px}
 .metric-label{font-size:12px;color:var(--text-2);margin-bottom:5px}
 .metric-value{font-size:21px;font-weight:600;color:var(--text)}
-.metric-value.pos{color:var(--green)}
-.metric-value.neg{color:var(--red)}
+.metric-value.pos{color:var(--green)}.metric-value.neg{color:var(--red)}
 .saldo-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px 18px 14px}
 .saldo-item{background:var(--surface-2);border-radius:var(--rs);padding:10px 12px;border:1px solid var(--border)}
 .saldo-label{font-size:11px;color:var(--text-2);margin-bottom:3px}
@@ -55,13 +53,11 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 .flabel{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text);flex:1}
 .fright{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .fval{font-size:14px;font-weight:500;color:var(--text)}
-.fmuted{font-size:13px;color:var(--text-3);font-style:italic}
-input[type=text]{width:130px;text-align:right;font-size:14px;font-weight:500;padding:5px 10px;border:1px solid var(--border-s);border-radius:var(--rs);background:var(--surface-2);color:var(--text);font-family:inherit;transition:border-color .15s}
+input[type=text]{width:130px;text-align:right;font-size:14px;font-weight:500;padding:5px 10px;border:1px solid var(--border-s);border-radius:var(--rs);background:var(--surface-2);color:var(--text);font-family:inherit}
 input[type=text]:focus{outline:none;border-color:var(--green)}
 input[type=text]::placeholder{color:var(--text-3);font-weight:400}
 .badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:20px;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
-.b-auto{background:var(--blue-bg);color:var(--blue-t)}
-.b-rep{background:var(--amber-bg);color:var(--amber-t)}
+.b-auto{background:var(--blue-bg);color:var(--blue-t)}.b-rep{background:var(--amber-bg);color:var(--amber-t)}
 .chk-label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:12px;color:var(--text-2);user-select:none}
 input[type=checkbox]{width:15px;height:15px;cursor:pointer;accent-color:var(--green)}
 .paid{opacity:.38}
@@ -69,46 +65,35 @@ input[type=checkbox]{width:15px;height:15px;cursor:pointer;accent-color:var(--gr
 .prog-bar{height:5px;border-radius:20px;background:var(--green);transition:width .4s ease}
 .prog-meta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px}
 .alert{padding:10px 14px;border-radius:var(--rs);font-size:13px;line-height:1.5}
-.a-warn{background:var(--amber-bg);color:var(--amber-t)}
-.a-ok{background:var(--green-bg);color:var(--green-t)}
-.a-info{background:var(--blue-bg);color:var(--blue-t)}
+.a-warn{background:var(--amber-bg);color:var(--amber-t)}.a-ok{background:var(--green-bg);color:var(--green-t)}.a-info{background:var(--blue-bg);color:var(--blue-t)}
 .btn-row{display:flex;gap:10px;justify-content:flex-end;padding:12px 18px 6px}
 .btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:var(--rs);font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border-s);background:transparent;color:var(--text);font-family:inherit;transition:all .15s}
 .btn:hover{background:var(--surface-2)}
-.btn-p{background:var(--text);color:var(--surface);border-color:var(--text)}
-.btn-p:hover{opacity:.82}
-.cat-row{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;border-bottom:1px solid var(--border);cursor:pointer;user-select:none;transition:background .1s}
-.cat-row:hover{background:var(--surface-2)}
-.cat-row:last-child{border-bottom:none}
+.btn-p{background:var(--text);color:var(--surface);border-color:var(--text)}.btn-p:hover{opacity:.82}
+.cat-row{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;border-bottom:1px solid var(--border);cursor:pointer;user-select:none}
+.cat-row:hover{background:var(--surface-2)}.cat-row:last-child{border-bottom:none}
 .cat-name{font-size:14px;font-weight:500;color:var(--text);display:flex;align-items:center;gap:8px}
-.cat-chev{font-size:12px;color:var(--text-3);transition:transform .2s;display:inline-block}
-.cat-chev.open{transform:rotate(180deg)}
+.cat-chev{font-size:12px;color:var(--text-3);transition:transform .2s;display:inline-block}.cat-chev.open{transform:rotate(180deg)}
 .cat-val{font-size:14px;font-weight:500;color:var(--text)}
-.cat-items{display:none;background:var(--surface-2)}
-.cat-items.open{display:block}
-.cat-item{display:flex;justify-content:space-between;padding:7px 18px 7px 30px;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-2)}
-.cat-item:last-child{border-bottom:none}
+.cat-items{display:none;background:var(--surface-2)}.cat-items.open{display:block}
+.cat-item{display:flex;justify-content:space-between;padding:7px 18px 7px 30px;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-2)}.cat-item:last-child{border-bottom:none}
 .hist-table{width:100%;border-collapse:collapse}
 .hist-table th{text-align:left;font-size:11px;font-weight:600;color:var(--text-2);text-transform:uppercase;letter-spacing:.05em;padding:10px 18px;border-bottom:1px solid var(--border)}
 .hist-table td{padding:11px 18px;border-bottom:1px solid var(--border);font-size:13px}
 .hist-table tr:last-child td{border-bottom:none}
-.hist-table tbody tr:hover td{background:var(--surface-2)}
 .pill{display:inline-flex;padding:3px 9px;border-radius:20px;font-size:12px;font-weight:600}
-.dp{font-size:11px;margin-left:5px;font-weight:500;color:var(--green-t)}
-.dn{font-size:11px;margin-left:5px;font-weight:500;color:var(--red-t)}
+.dp{font-size:11px;margin-left:5px;font-weight:500;color:var(--green-t)}.dn{font-size:11px;margin-left:5px;font-weight:500;color:var(--red-t)}
 .pie-wrap{display:flex;gap:20px;align-items:center;padding:16px 18px;flex-wrap:wrap}
 .pie-canvas-wrap{flex:0 0 180px}
 .pie-legend{flex:1;min-width:160px;display:flex;flex-direction:column;gap:6px}
 .pie-legend-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text-2)}
 .pie-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.seg{display:inline-flex;border:1px solid var(--border-s);border-radius:var(--rs);overflow:hidden}
+.seg button{padding:5px 12px;font-size:12px;font-weight:500;background:transparent;color:var(--text-2);border:none;cursor:pointer;font-family:inherit}
+.seg button.on{background:var(--text);color:var(--surface)}
 #toast{position:fixed;bottom:24px;right:24px;padding:10px 18px;background:var(--text);color:var(--surface);border-radius:var(--rs);font-size:13px;font-weight:500;opacity:0;transform:translateY(8px);transition:all .2s;pointer-events:none;z-index:999}
 #toast.show{opacity:1;transform:translateY(0)}
-@media(max-width:600px){
-  .topnav .nav-btn{padding:6px 8px;font-size:11px}
-  .main{padding:14px 14px 40px}
-  .mgrid{grid-template-columns:1fr 1fr}
-  .saldo-grid{grid-template-columns:1fr 1fr}
-}
+@media(max-width:600px){.topnav .nav-btn{padding:6px 8px;font-size:11px}.main{padding:14px 14px 40px}.mgrid{grid-template-columns:1fr 1fr}.saldo-grid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -137,18 +122,16 @@ input[type=checkbox]{width:15px;height:15px;cursor:pointer;accent-color:var(--gr
 const SUPA_URL='https://hzfvsohazcqgwpupmgju.supabase.co';
 const SUPA_KEY='sb_publishable_pwloxHbQF_HVlepTgoTnSA_W04qWLR8';
 const SUPA_HDR={'Content-Type':'application/json','apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY};
+const PALETTE=['#2a78d6','#eb6834','#1baf7a','#eda100','#e87ba4','#008300','#4a3aa7','#e34948','#888780','#378ADD','#0F6E56','#854F0B'];
 
-const fBR=n=>'R$ '+Number(n).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fBR=n=>n==null?'—':'R$ '+Number(n).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
 const pBR=s=>typeof s==='number'?s:parseFloat(String(s).replace(/\./g,'').replace(',','.'))||0;
 const fD=n=>(n>=0?'+':'')+Number(n).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const dark=()=>matchMedia('(prefers-color-scheme:dark)').matches;
 
 const TABS=['maio','junho','julho','agosto','graficos','historico'];
-
 function showTab(t){
-  TABS.forEach(n=>{
-    document.getElementById('tab-'+n).classList.toggle('active',n===t);
-    document.getElementById('page-'+n).classList.toggle('active',n===t);
-  });
+  TABS.forEach(n=>{document.getElementById('tab-'+n).classList.toggle('active',n===t);document.getElementById('page-'+n).classList.toggle('active',n===t);});
   if(t==='historico'){delete document.getElementById('page-historico').dataset.built;buildHist();}
   if(t==='graficos'&&!document.getElementById('page-graficos').dataset.built)buildGraficos();
   if(t==='junho'&&!document.getElementById('page-junho').dataset.built)buildJunho();
@@ -156,288 +139,128 @@ function showTab(t){
   if(t==='agosto'&&!document.getElementById('page-agosto').dataset.built)buildAgosto();
 }
 
-function calc(f){
-  const tot=f.salario+f.vr+f.vho+f.paula;
-  const desp=f.aluguel+f.cond+f.iptu+f.luz+f.internet+f.terapia;
-  return{tot,desp,total:desp+f.cartao,sobrou:tot-desp-f.cartao};
-}
+function calc(f){const tot=f.salario+f.vr+f.vho+f.paula;const desp=f.aluguel+f.cond+f.iptu+f.luz+f.internet+f.terapia;return{tot,desp,total:desp+f.cartao,sobrou:tot-desp-f.cartao};}
 
-function summaryHtml(f,saldoInicio,saldoFim,s2label){
+function summaryHtml(f,si,sf,s2l){
   const c=calc(f),sc=c.sobrou>=0?'pos':'neg';
   let sh='';
-  if(saldoInicio!=null){
-    sh=`<div class="saldo-grid">
-      <div class="saldo-item"><div class="saldo-label">Saldo início do mês</div><div class="saldo-val">${fBR(saldoInicio)}</div></div>
-      <div class="saldo-item"><div class="saldo-label">${s2label||'Saldo fim do mês'}</div><div class="saldo-val">${fBR(saldoFim)}</div></div>
-    </div>`;
-  }
-  return`<div class="mgrid">
-    <div class="metric"><div class="metric-label">Salário total</div><div class="metric-value">${fBR(c.tot)}</div></div>
-    <div class="metric"><div class="metric-label">Despesas fixas</div><div class="metric-value">${fBR(c.desp)}</div></div>
-    <div class="metric"><div class="metric-label">Fatura cartão</div><div class="metric-value">${fBR(f.cartao)}</div></div>
-    <div class="metric"><div class="metric-label">Sobrou no mês</div><div class="metric-value ${sc}">${fBR(c.sobrou)}</div></div>
-  </div>${sh}`;
+  if(si!=null){sh=`<div class="saldo-grid"><div class="saldo-item"><div class="saldo-label">Saldo início do mês</div><div class="saldo-val">${fBR(si)}</div></div><div class="saldo-item"><div class="saldo-label">${s2l||'Saldo fim do mês'}</div><div class="saldo-val">${fBR(sf)}</div></div></div>`;}
+  return`<div class="mgrid"><div class="metric"><div class="metric-label">Salário total</div><div class="metric-value">${fBR(c.tot)}</div></div><div class="metric"><div class="metric-label">Despesas fixas</div><div class="metric-value">${fBR(c.desp)}</div></div><div class="metric"><div class="metric-label">Fatura cartão</div><div class="metric-value">${fBR(f.cartao)}</div></div><div class="metric"><div class="metric-label">Sobrou no mês</div><div class="metric-value ${sc}">${fBR(c.sobrou)}</div></div></div>${sh}`;
 }
+function inputRow(l,id,v,b,ev){return`<div class="frow"><span class="flabel">${l} <span class="badge ${b==='auto'?'b-auto':'b-rep'}">${b==='auto'?'auto':'repetido'}</span></span><input type="text" id="${id}" value="${v}" oninput="${ev}" /></div>`;}
+function checkRow(k,l,v,p,e,ph,pf,ev){const r=e?`<input type="text" id="${pf}v-${k}" value="${v}" placeholder="${ph||''}" oninput="${ev}" style="width:120px" />`:`<span class="fval">${v?'R$ '+v:''}</span>`;return`<div class="frow${p?' paid':''}" id="${pf}row-${k}"><span class="flabel">${l}</span><div class="fright">${r}<label class="chk-label"><input type="checkbox" id="${pf}chk-${k}" ${p?'checked':''} onchange="${ev}" /> pago</label></div></div>`;}
+function progCard(l,p,b){return`<div class="card"><div class="card-hd"><span class="card-title">Progresso dos pagamentos</span></div><div style="padding:12px 18px 14px"><div class="prog-meta"><span id="${l}" style="font-size:13px;color:var(--text-2)"></span><span id="${p}" style="font-size:13px;font-weight:600"></span></div><div class="prog-wrap"><div class="prog-bar" id="${b}" style="width:0%"></div></div></div></div>`;}
+function updProg(cs,pf,al,li,pi,bi){let paid=0;const pend=[];cs.forEach(c=>{const chk=document.getElementById(pf+'chk-'+c.key);const row=document.getElementById(pf+'row-'+c.key);if(chk?.checked){paid++;row?.classList.add('paid');}else{row?.classList.remove('paid');pend.push(c.label);}});const pct=Math.round(paid/cs.length*100);document.getElementById(li).textContent=paid+' de '+cs.length+' contas pagas';document.getElementById(pi).textContent=pct+'%';document.getElementById(bi).style.width=pct+'%';const a=document.getElementById(al);if(pend.length>0){a.style.display='block';a.className='alert a-warn';a.textContent='Pendente: '+pend.join(' · ');}else{a.style.display='block';a.className='alert a-ok';a.textContent='Todas as contas foram pagas.';}}
 
-function inputRow(label,id,val,badge,ev){
-  return`<div class="frow"><span class="flabel">${label} <span class="badge ${badge==='auto'?'b-auto':'b-rep'}">${badge==='auto'?'auto':'repetido'}</span></span><input type="text" id="${id}" value="${val}" oninput="${ev}" /></div>`;
-}
-
-function checkRow(key,label,val,pago,edit,ph,prefix,ev){
-  const right=edit?`<input type="text" id="${prefix}v-${key}" value="${val}" placeholder="${ph||''}" oninput="${ev}" style="width:120px" />`:`<span class="fval">${val?'R$ '+val:''}</span>`;
-  return`<div class="frow${pago?' paid':''}" id="${prefix}row-${key}"><span class="flabel">${label}</span><div class="fright">${right}<label class="chk-label"><input type="checkbox" id="${prefix}chk-${key}" ${pago?'checked':''} onchange="${ev}" /> pago</label></div></div>`;
-}
-
-function progCard(lId,pId,bId){
-  return`<div class="card"><div class="card-hd"><span class="card-title">Progresso dos pagamentos</span></div>
-    <div style="padding:12px 18px 14px"><div class="prog-meta"><span id="${lId}" style="font-size:13px;color:var(--text-2)"></span><span id="${pId}" style="font-size:13px;font-weight:600"></span></div>
-    <div class="prog-wrap"><div class="prog-bar" id="${bId}" style="width:0%"></div></div></div></div>`;
-}
-
-function updProg(contas,prefix,alertId,lId,pId,bId){
-  let paid=0;const pend=[];
-  contas.forEach(c=>{
-    const chk=document.getElementById(prefix+'chk-'+c.key);
-    const row=document.getElementById(prefix+'row-'+c.key);
-    if(chk?.checked){paid++;row?.classList.add('paid');}
-    else{row?.classList.remove('paid');pend.push(c.label);}
-  });
-  const pct=Math.round(paid/contas.length*100);
-  document.getElementById(lId).textContent=paid+' de '+contas.length+' contas pagas';
-  document.getElementById(pId).textContent=pct+'%';
-  document.getElementById(bId).style.width=pct+'%';
-  const al=document.getElementById(alertId);
-  if(pend.length>0){al.style.display='block';al.className='alert a-warn';al.textContent='Pendente: '+pend.join(' · ');}
-  else{al.style.display='block';al.className='alert a-ok';al.textContent='Todas as contas foram pagas.';}
-}
-
-function faturaHtml(fat){
-  const rows=fat.categorias.map(c=>`
-    <div><div class="cat-row" onclick="toggleCat('${c.id}')">
-      <span class="cat-name">${c.nome} <span class="cat-chev" id="chev-${c.id}">▾</span></span>
-      <span class="cat-val">${fBR(c.total)}</span>
-    </div>
-    <div class="cat-items" id="catitems-${c.id}">
-      ${c.itens.map(i=>`<div class="cat-item"><span>${i.nome}</span><span>${fBR(i.val)}</span></div>`).join('')}
-    </div></div>`).join('');
-  return`<div class="card"><div class="card-hd"><span class="card-title">Fatura Inter — ${fat.mes} (venc. ${fat.venc})</span><span class="card-total">${fBR(fat.total)}</span></div>${rows}</div>`;
-}
-
-function toggleCat(id){
-  document.getElementById('catitems-'+id)?.classList.toggle('open');
-  document.getElementById('chev-'+id)?.classList.toggle('open');
-}
-
-/* ── FATURA JUNHO ── */
+/* fatura breakdown: junho + julho */
 const FATURA_JUNHO={total:7692.21,mes:'Junho 2026',venc:'07/07/2026',categorias:[
-  {id:'transporte',nome:'Transporte',total:274.85,itens:[{nome:'99 Ride (×7)',val:161.05},{nome:'Uber (×6)',val:108.10},{nome:'Metrô BH',val:5.80}]},
-  {id:'locacao',nome:'Locação de carros',total:904.37,itens:[{nome:'MOVIDA RESERVAS',val:634.68},{nome:'LOCALIZA RAC',val:269.69}]},
-  {id:'mercado',nome:'Mercado',total:896.07,itens:[{nome:'SUP EPA DEZESSEIS (×10)',val:540.83},{nome:'Supermercados BH (×3)',val:210.07},{nome:'Assaí Atacadista',val:142.15},{nome:'SupermercadoSerra',val:3.02}]},
-  {id:'comida',nome:'Comida e bebida',total:1370.36,itens:[{nome:'Tom Cozinha de Herança (×2)',val:498.43},{nome:'Casa de Chá Filomena',val:228.80},{nome:'IFD Lifebox BH',val:113.81},{nome:'Íberico Empreendimento',val:106.06},{nome:'Peixe Frito (×3)',val:112.50},{nome:'IFD Mori Mori Don',val:64.85},{nome:'Cervejaria Odeon (×2)',val:72.00},{nome:'Mister Rock Bar (×2)',val:66.00},{nome:'Distribuidora 1001',val:47.80},{nome:'Armazém e Empório',val:30.40},{nome:'CGME Casa de Lanches',val:31.50},{nome:'Bar Ze Luiz',val:15.00},{nome:'Araujo Loja',val:33.99},{nome:'Divino Fogão',val:29.90},{nome:'APDQ Mercado (×2)',val:24.00},{nome:'Mercado Central',val:16.00},{nome:'Mayhuna Miyahara',val:6.00}]},
-  {id:'lazer',nome:'Lazer e entretenimento',total:526.48,itens:[{nome:'Ticketmaster (parcela 03/03)',val:472.00},{nome:'LEITURA',val:52.80},{nome:'Divipaypayments',val:9.90}]},
-  {id:'hospedagem',nome:'Viagem e hospedagem',total:304.91,itens:[{nome:'AIRBNB (parcela 01/06)',val:304.91}]},
-  {id:'combustivel',nome:'Combustível',total:263.35,itens:[{nome:'Posto Vila',val:113.06},{nome:'Posto Serra do Cipó',val:100.00},{nome:'Posto Santo Agostinho',val:50.29}]},
-  {id:'assinaturas',nome:'Assinaturas',total:395.67,itens:[{nome:'ANTHROPIC* CLAUDE SUB',val:110.00},{nome:'LinkedIn',val:104.98},{nome:'PlayStation',val:99.89},{nome:'Spotify',val:40.90},{nome:'Apple.com (×2)',val:40.80}]},
-  {id:'trabalho',nome:'Ferramentas de trabalho',total:1063.31,itens:[{nome:'FIGMA ($192 USD)',val:1023.63},{nome:'IOF Internacional (×2)',val:39.68}]},
-  {id:'mobilidade',nome:'Mobilidade urbana',total:120.44,itens:[{nome:'JETSHR (×15)',val:110.45},{nome:'URENTCAR',val:9.99}]},
-  {id:'compras',nome:'Compras online',total:165.46,itens:[{nome:'Mercado*MagazinePro',val:151.50},{nome:'EC*MELIMAIS',val:9.90},{nome:'FAZDigitalBH (×2)',val:11.22}]},
-  {id:'outros',nome:'Outros',total:406.79,itens:[{nome:'Bike Cipó',val:170.00},{nome:'BYE GAS',val:120.00},{nome:'66061806Tatiana',val:34.00}]}
+  {id:'jn-transp',nome:'Transporte',total:274.85,itens:[{n:'99 (×7)',v:161.05},{n:'Uber (×6)',v:108.10},{n:'Metrô BH',v:5.80}]},
+  {id:'jn-loc',nome:'Locação de carros',total:904.37,itens:[{n:'MOVIDA RESERVAS',v:634.68},{n:'LOCALIZA RAC',v:269.69}]},
+  {id:'jn-merc',nome:'Mercado',total:896.07,itens:[{n:'Epa (×10)',v:540.83},{n:'Supermercados BH (×3)',v:210.07},{n:'Assaí Atacadista',v:142.15},{n:'SupermercadoSerra',v:3.02}]},
+  {id:'jn-comida',nome:'Comida e bebida',total:1370.36,itens:[{n:'Tom Cozinha de Herança (×2)',v:498.43},{n:'Casa de Chá Filomena',v:228.80},{n:'IFD Lifebox BH',v:113.81},{n:'Íberico Empreendimento',v:106.06},{n:'Peixe Frito (×3)',v:112.50},{n:'IFD Mori Mori Don',v:64.85},{n:'Cervejaria Odeon (×2)',v:72.00},{n:'Mister Rock Bar (×2)',v:66.00},{n:'Distribuidora 1001',v:47.80},{n:'Armazém e Empório',v:30.40},{n:'CGME Casa de Lanches',v:31.50},{n:'Bar Ze Luiz',v:15.00},{n:'Araujo Loja',v:33.99},{n:'Divino Fogão',v:29.90},{n:'APDQ Mercado (×2)',v:24.00},{n:'Mercado Central',v:16.00},{n:'Mayhuna Miyahara',v:6.00}]},
+  {id:'jn-lazer',nome:'Lazer e entretenimento',total:526.48,itens:[{n:'Ticketmaster (parc 03/03)',v:472.00},{n:'LEITURA',v:52.80},{n:'Divipaypayments',v:9.90}]},
+  {id:'jn-hosp',nome:'Viagem e hospedagem',total:304.91,itens:[{n:'AIRBNB parc 01/06',v:304.91}]},
+  {id:'jn-comb',nome:'Combustível',total:263.35,itens:[{n:'Posto Vila',v:113.06},{n:'Posto Serra do Cipó',v:100.00},{n:'Posto Santo Agostinho',v:50.29}]},
+  {id:'jn-assin',nome:'Assinaturas',total:395.67,itens:[{n:'Claude Pro (Assinatura)',v:110.00},{n:'LinkedIn',v:104.98},{n:'PlayStation',v:99.89},{n:'Spotify',v:40.90},{n:'Apple.com (×2)',v:40.80}]},
+  {id:'jn-trab',nome:'Ferramentas de trabalho',total:1063.31,itens:[{n:'FIGMA ($192 USD)',v:1023.63},{n:'IOF Internacional (×2)',v:39.68}]},
+  {id:'jn-mob',nome:'Mobilidade urbana',total:120.44,itens:[{n:'JETSHR (×15)',v:110.45},{n:'URENTCAR',v:9.99}]},
+  {id:'jn-compras',nome:'Compras online',total:165.46,itens:[{n:'Mercado*MagazinePro',v:151.50},{n:'EC*MELIMAIS',v:9.90},{n:'FAZDigitalBH (×2)',v:11.22}]},
+  {id:'jn-outros',nome:'Outros',total:406.79,itens:[{n:'Bike Cipó',v:170.00},{n:'BYE GAS',v:120.00},{n:'66061806Tatiana',v:34.00}]}
+]};
+const FATURA_JULHO={total:4687.38,mes:'Julho 2026',venc:'07/08/2026',categorias:[
+  {id:'jl-transp',nome:'Transporte',total:426.36,itens:[{n:'99 (×8)',v:129.57},{n:'Uber (×14)',v:296.79}]},
+  {id:'jl-merc',nome:'Mercado',total:536.07,itens:[{n:'Epa (×7)',v:429.29},{n:'Supermercados BH (×2)',v:134.11},{n:'Supermercado e Padaria',v:28.46}]},
+  {id:'jl-comida',nome:'Comida e bebida',total:822.03,itens:[{n:'Café com Milho',v:108.85},{n:'RER Alimentos',v:105.40},{n:'Peixe Frito (×3)',v:163.28},{n:'IFD CB Alimentação',v:58.01},{n:'Attelier Restaurante',v:55.78},{n:'Distribuidora 1001',v:47.80},{n:'SN Gutierrez',v:42.33},{n:'IFD Brasal Bar',v:36.17},{n:'IFD Tempero de Esquina',v:31.89},{n:'DaniBoy',v:38.00},{n:'AleriaComercio',v:29.00},{n:'Republica do Rango',v:25.00},{n:'Armazém e Empório',v:20.75},{n:'Mercado das Flores',v:20.00},{n:'SP Belo Horizonte 2002',v:39.00},{n:'Ana Lanches',v:3.00}]},
+  {id:'jl-hosp',nome:'Viagem e hospedagem',total:304.87,itens:[{n:'AIRBNB parc 02/06',v:304.87}]},
+  {id:'jl-esporte',nome:'Esporte',total:606.97,itens:[{n:'Adidas',v:542.97},{n:'Bici Shop',v:64.00}]},
+  {id:'jl-saude',nome:'Saúde',total:90.00,itens:[{n:'Seu Elias Barba Cabelo',v:90.00}]},
+  {id:'jl-lazer',nome:'Lazer e entretenimento',total:401.65,itens:[{n:'Mascate Floresta',v:107.80},{n:'EstudioMoaiBh',v:51.00},{n:'Garagem do Nerd',v:77.95},{n:'Tereza Pereira Oliv',v:20.00}]},
+  {id:'jl-mob',nome:'Mobilidade urbana',total:176.65,itens:[{n:'JETSHR (×22)',v:166.66},{n:'URENTCAR',v:9.99}]},
+  {id:'jl-assin',nome:'Assinaturas',total:302.08,itens:[{n:'Claude Pro (Assinatura)',v:110.00},{n:'LinkedIn',v:104.98},{n:'Spotify',v:40.90},{n:'Apple.com (×3)',v:46.79},{n:'IOF Internacional (×2)',v:4.04}]},
+  {id:'jl-compras',nome:'Compras online',total:440.89,itens:[{n:'MercadoLivre (×3)',v:430.99},{n:'Mercado Livre + (Assinatura)',v:9.90}]},
+  {id:'jl-mat',nome:'Materiais',total:14.90,itens:[{n:'LF Material Construção (×3)',v:14.90}]},
+  {id:'jl-outros',nome:'Outros',total:370.80,itens:[{n:'NUV*ODODUA parc 01/02',v:118.65},{n:'Loja Lourdes',v:149.98},{n:'TicketCard',v:96.80},{n:'Alexander Wiseman',v:5.37}]}
 ]};
 
-/* ── MAIO ── */
-const MAIO_R=[
-  {id:'m-salario',label:'Salário (Itaú — recebido em maio)',val:'13.981,77',badge:'auto'},
-  {id:'m-vr',label:'Vale refeição',val:'990,00',badge:'rep'},
-  {id:'m-vho',label:'Vale home office',val:'100,00',badge:'rep'},
-  {id:'m-paula',label:'Paula',val:'1.618,13',badge:'auto'},
+const FATURA_PERS_JULHO={total:742.30,mes:'Personnalité — Julho 2026',venc:'03/08/2026',categorias:[
+  {id:'pj-comida',nome:'Comida e bebida',total:377.03,itens:[{n:'Koboshi Restaurante',v:245.28},{n:'Supermercado e Padaria',v:51.95},{n:'Armazém e Empório',v:28.90},{n:'Mercado das Flores',v:25.00},{n:'Epa',v:51.20}]},
+  {id:'pj-esporte',nome:'Esporte',total:159.97,itens:[{n:'Adidas',v:9.97},{n:'Adidas (PayU parc 01/02)',v:150.00}]},
+  {id:'pj-outros',nome:'Outros',total:180.00,itens:[{n:'JulianaGomesDe',v:180.00}]}
+]};
+function faturaHtml(fat){
+  const rows=fat.categorias.map(c=>`<div><div class="cat-row" onclick="toggleCat('${c.id}')"><span class="cat-name">${c.nome} <span class="cat-chev" id="chev-${c.id}">▾</span></span><span class="cat-val">${fBR(c.total)}</span></div><div class="cat-items" id="catitems-${c.id}">${c.itens.map(i=>`<div class="cat-item"><span>${i.n}</span><span>${fBR(i.v)}</span></div>`).join('')}</div></div>`).join('');
+  return`<div class="card"><div class="card-hd"><span class="card-title">Fatura Inter — ${fat.mes} (venc. ${fat.venc})</span><span class="card-total">${fBR(fat.total)}</span></div>${rows}</div>`;
+}
+function toggleCat(id){document.getElementById('catitems-'+id)?.classList.toggle('open');document.getElementById('chev-'+id)?.classList.toggle('open');}
+
+/* two charts for card detail: pie by category + bar across months */
+const CARTAO_MESES=[
+  {mes:'Maio',total:5020.93},{mes:'Junho',total:6148.47},
+  {mes:'Julho',total:7692.21},{mes:'Agosto',total:4013.68},
 ];
-const MAIO_D=[
-  {id:'m-aluguel',label:'Aluguel',val:'1.883,11',badge:'auto'},
-  {id:'m-cond',label:'Condomínio',val:'563,19',badge:'auto'},
-  {id:'m-iptu',label:'IPTU',val:'305,76',badge:'auto'},
-  {id:'m-luz',label:'Luz',val:'323,67',badge:'auto'},
-  {id:'m-internet',label:'Internet + celular',val:'359,13',badge:'auto'},
-  {id:'m-terapia',label:'Terapia',val:'1.360,00',badge:'auto'},
-  {id:'m-cartao',label:'Fatura cartão Inter',val:'5.020,93',badge:'auto'},
-];
+function buildPie(cid,lid,cats){
+  const total=cats.reduce((s,c)=>s+c.total,0);
+  new Chart(document.getElementById(cid).getContext('2d'),{type:'doughnut',data:{labels:cats.map(c=>c.nome),datasets:[{data:cats.map(c=>c.total),backgroundColor:PALETTE,borderWidth:2,borderColor:dark()?'#1E1E1E':'#FFFFFF',hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:false,cutout:'56%',plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+fBR(ctx.parsed)+' ('+(ctx.parsed/total*100).toFixed(1)+'%)'}}}}});
+  document.getElementById(lid).innerHTML=cats.map((c,i)=>`<div class="pie-legend-item"><div class="pie-dot" style="background:${PALETTE[i]}"></div><span>${c.nome} <strong style="color:var(--text)">${(c.total/total*100).toFixed(1)}%</strong></span></div>`).join('');
+}
+function buildCartaoBar(cid){
+  const tc=dark()?'#898781':'#898781',gc=dark()?'#2c2c2a':'#e1e0d9';
+  new Chart(document.getElementById(cid).getContext('2d'),{type:'bar',data:{labels:CARTAO_MESES.map(m=>m.mes),datasets:[{label:'Fatura',data:CARTAO_MESES.map(m=>m.total),backgroundColor:'#1baf7a',borderRadius:4,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+fBR(ctx.parsed.y)}}},scales:{x:{ticks:{color:tc,font:{size:12}},grid:{display:false},border:{display:false}},y:{ticks:{color:tc,font:{size:11},callback:v=>'R$ '+Number(v).toLocaleString('pt-BR',{maximumFractionDigits:0})},grid:{color:gc},border:{display:false}}}}});
+}
+function cardChartsHtml(pfx){
+  return`<div class="card"><div class="card-hd"><span class="card-title">Distribuição por categoria</span></div><div class="pie-wrap"><div class="pie-canvas-wrap" style="position:relative;height:180px"><canvas id="${pfx}-pie" role="img" aria-label="Distribuição da fatura por categoria"></canvas></div><div class="pie-legend" id="${pfx}-pielegend"></div></div></div>
+  <div class="card"><div class="card-hd"><span class="card-title">Fatura ao longo dos meses</span></div><div style="padding:16px 18px;position:relative;height:200px"><canvas id="${pfx}-bar" role="img" aria-label="Comparativo da fatura de cartão ao longo dos meses"></canvas></div></div>`;
+}
+
+/* MAIO */
+const MAIO_R=[{id:'m-salario',label:'Salário (Itaú — recebido em maio)',val:'13.981,77',badge:'auto'},{id:'m-vr',label:'Vale refeição',val:'990,00',badge:'rep'},{id:'m-vho',label:'Vale home office',val:'100,00',badge:'rep'},{id:'m-paula',label:'Paula',val:'1.618,13',badge:'auto'}];
+const MAIO_D=[{id:'m-aluguel',label:'Aluguel',val:'1.883,11',badge:'auto'},{id:'m-cond',label:'Condomínio',val:'563,19',badge:'auto'},{id:'m-iptu',label:'IPTU',val:'305,76',badge:'auto'},{id:'m-luz',label:'Luz',val:'323,67',badge:'auto'},{id:'m-internet',label:'Internet + celular',val:'359,13',badge:'auto'},{id:'m-terapia',label:'Terapia',val:'1.360,00',badge:'auto'},{id:'m-cartao',label:'Fatura cartão Inter',val:'5.020,93',badge:'auto'}];
 function getMaio(){const g=id=>pBR(document.getElementById(id)?.value||'0');return{salario:g('m-salario'),vr:g('m-vr'),vho:g('m-vho'),paula:g('m-paula'),aluguel:g('m-aluguel'),cond:g('m-cond'),iptu:g('m-iptu'),luz:g('m-luz'),internet:g('m-internet'),terapia:g('m-terapia'),cartao:g('m-cartao')};}
 function recalcMaio(){document.getElementById('maio-summary').innerHTML=summaryHtml(getMaio(),47499.22,38466.06);}
-(function buildMaio(){
-  const pg=document.getElementById('page-maio');pg.dataset.built='1';
-  pg.innerHTML=`<div id="maio-summary"></div>
-    <div class="card"><div class="card-hd"><span class="card-title">Receitas</span></div>${MAIO_R.map(f=>inputRow(f.label,f.id,f.val,f.badge,'recalcMaio()')).join('')}</div>
-    <div class="card"><div class="card-hd"><span class="card-title">Despesas</span></div>${MAIO_D.map(f=>inputRow(f.label,f.id,f.val,f.badge,'recalcMaio()')).join('')}</div>
-    <div class="btn-row"><button class="btn btn-p" onclick="salvar('maio')">Salvar maio</button></div>
-    <div id="maio-msg" style="display:none"></div>`;
-  recalcMaio();
-})();
+(function buildMaio(){const pg=document.getElementById('page-maio');pg.dataset.built='1';pg.innerHTML=`<div id="maio-summary"></div><div class="card"><div class="card-hd"><span class="card-title">Receitas</span></div>${MAIO_R.map(f=>inputRow(f.label,f.id,f.val,f.badge,'recalcMaio()')).join('')}</div><div class="card"><div class="card-hd"><span class="card-title">Despesas</span></div>${MAIO_D.map(f=>inputRow(f.label,f.id,f.val,f.badge,'recalcMaio()')).join('')}</div><div class="btn-row"><button class="btn btn-p" onclick="salvar('maio')">Salvar maio</button></div><div id="maio-msg" style="display:none"></div>`;recalcMaio();})();
 
-/* ── JUNHO ── */
-const JUNHO_C=[
-  {key:'aluguel',label:'Aluguel',val:'1.883,11',pago:true,edit:false},
-  {key:'cond',label:'Condomínio',val:'864,73',pago:true,edit:false},
-  {key:'iptu',label:'IPTU',val:'305,76',pago:true,edit:false},
-  {key:'internet',label:'Internet + celular',val:'363,77',pago:true,edit:false},
-  {key:'luz',label:'Luz',val:'393,94',pago:true,edit:false},
-  {key:'terapia',label:'Terapia',val:'',pago:false,edit:true,ph:'pendente'},
-  {key:'cartao',label:'Fatura cartão Inter',val:'6.148,47',pago:true,edit:false},
-];
-const JUNHO_R=[
-  {id:'j-salario',label:'Salário (Itaú — recebido em junho)',val:'13.981,77',badge:'auto'},
-  {id:'j-vr',label:'Vale refeição',val:'990,00',badge:'rep'},
-  {id:'j-vho',label:'Vale home office',val:'100,00',badge:'rep'},
-  {id:'j-paula',label:'Paula',val:'1.987,47',badge:'auto'},
-];
-function getJunho(){const g=id=>pBR(document.getElementById(id)?.value||'0');const ter=document.getElementById('jv-terapia');return{salario:g('j-salario'),vr:g('j-vr'),vho:g('j-vho'),paula:g('j-paula'),aluguel:1883.11,cond:864.73,iptu:305.76,luz:393.94,internet:363.77,terapia:ter?pBR(ter.value):0,cartao:6148.47};}
+/* JUNHO */
+const JUNHO_C=[{key:'aluguel',label:'Aluguel',val:'1.883,11',pago:true,edit:false},{key:'cond',label:'Condomínio',val:'864,73',pago:true,edit:false},{key:'iptu',label:'IPTU',val:'305,76',pago:true,edit:false},{key:'internet',label:'Internet + celular',val:'363,77',pago:true,edit:false},{key:'luz',label:'Luz',val:'393,94',pago:true,edit:false},{key:'terapia',label:'Terapia',val:'',pago:false,edit:true,ph:'pendente'},{key:'cartao',label:'Fatura cartão Inter',val:'6.148,47',pago:true,edit:false}];
+const JUNHO_R=[{id:'j-salario',label:'Salário (Itaú — recebido em junho)',val:'13.981,77',badge:'auto'},{id:'j-vr',label:'Vale refeição',val:'990,00',badge:'rep'},{id:'j-vho',label:'Vale home office',val:'100,00',badge:'rep'},{id:'j-paula',label:'Paula',val:'1.987,47',badge:'auto'}];
+function getJunho(){const g=id=>pBR(document.getElementById(id)?.value||'0');const t=document.getElementById('jv-terapia');return{salario:g('j-salario'),vr:g('j-vr'),vho:g('j-vho'),paula:g('j-paula'),aluguel:1883.11,cond:864.73,iptu:305.76,luz:393.94,internet:363.77,terapia:t?pBR(t.value):0,cartao:6148.47};}
 function updJunho(){updProg(JUNHO_C,'j','junho-alert','j-lbl','j-pct','j-bar');document.getElementById('junho-summary').innerHTML=summaryHtml(getJunho(),47499.22,38466.06);}
-function buildJunho(){
-  const pg=document.getElementById('page-junho');pg.dataset.built='1';
-  pg.innerHTML=`${progCard('j-lbl','j-pct','j-bar')}<div id="junho-summary"></div>
-    <div class="card"><div class="card-hd"><span class="card-title">Receitas</span></div>${JUNHO_R.map(f=>inputRow(f.label,f.id,f.val,f.badge,'updJunho()')).join('')}</div>
-    <div class="card"><div class="card-hd"><span class="card-title">Contas de junho</span></div>${JUNHO_C.map(c=>checkRow(c.key,c.label,c.val,c.pago,c.edit,c.ph,'j','updJunho()')).join('')}</div>
-    <div id="junho-alert" style="display:none"></div>
-    <div class="btn-row"><button class="btn btn-p" onclick="salvar('junho')">Salvar junho</button></div>
-    <div id="junho-msg" style="display:none"></div>`;
-  updJunho();
-}
+function buildJunho(){const pg=document.getElementById('page-junho');pg.dataset.built='1';pg.innerHTML=`${progCard('j-lbl','j-pct','j-bar')}<div id="junho-summary"></div><div class="card"><div class="card-hd"><span class="card-title">Receitas</span></div>${JUNHO_R.map(f=>inputRow(f.label,f.id,f.val,f.badge,'updJunho()')).join('')}</div><div class="card"><div class="card-hd"><span class="card-title">Contas de junho</span></div>${JUNHO_C.map(c=>checkRow(c.key,c.label,c.val,c.pago,c.edit,c.ph,'j','updJunho()')).join('')}</div><div id="junho-alert" style="display:none"></div><div class="btn-row"><button class="btn btn-p" onclick="salvar('junho')">Salvar junho</button></div><div id="junho-msg" style="display:none"></div>`;updJunho();}
 
-/* ── JULHO ── */
-const JULHO_C=[
-  {key:'aluguel',label:'Aluguel',val:'1.883,11',pago:true,edit:false},
-  {key:'cond',label:'Condomínio',val:'912,28',pago:true,edit:false},
-  {key:'iptu',label:'IPTU',val:'305,76',pago:true,edit:false},
-  {key:'luz',label:'Luz',val:'393,94',pago:true,edit:false},
-  {key:'internet',label:'Internet + celular',val:'363,02',pago:true,edit:false},
-  {key:'terapia',label:'Terapia',val:'0,00',pago:false,edit:false},
-  {key:'cartao',label:'Fatura cartão Inter',val:'7.692,21',pago:true,edit:false},
-];
-const JULHO_R=[
-  {id:'jl-salario',label:'Salário (Itaú — recebido em junho)',val:'13.981,77',badge:'auto'},
-  {id:'jl-vr',label:'Vale refeição',val:'990,00',badge:'rep'},
-  {id:'jl-vho',label:'Vale home office',val:'100,00',badge:'rep'},
-  {id:'jl-paula',label:'Paula',val:'1.751,40',badge:'auto'},
-];
+/* JULHO */
+const JULHO_C=[{key:'aluguel',label:'Aluguel',val:'1.883,11',pago:true,edit:false},{key:'cond',label:'Condomínio',val:'912,28',pago:true,edit:false},{key:'iptu',label:'IPTU',val:'305,76',pago:true,edit:false},{key:'luz',label:'Luz',val:'393,94',pago:true,edit:false},{key:'internet',label:'Internet + celular',val:'363,02',pago:true,edit:false},{key:'terapia',label:'Terapia',val:'0,00',pago:false,edit:false},{key:'cartao',label:'Fatura cartão Inter',val:'7.692,21',pago:true,edit:false}];
+const JULHO_R=[{id:'jl-salario',label:'Salário (Itaú — recebido em julho)',val:'13.981,77',badge:'auto'},{id:'jl-vr',label:'Vale refeição',val:'990,00',badge:'rep'},{id:'jl-vho',label:'Vale home office',val:'100,00',badge:'rep'},{id:'jl-paula',label:'Paula',val:'1.751,40',badge:'auto'}];
 function getJulho(){const g=id=>pBR(document.getElementById(id)?.value||'0');return{salario:g('jl-salario'),vr:g('jl-vr'),vho:g('jl-vho'),paula:g('jl-paula'),aluguel:1883.11,cond:912.28,iptu:305.76,luz:393.94,internet:363.02,terapia:0,cartao:7692.21};}
 function updJulho(){updProg(JULHO_C,'jl','julho-alert','jl-lbl','jl-pct','jl-bar');document.getElementById('julho-summary').innerHTML=summaryHtml(getJulho(),38476.06,27781.34);}
-function buildJulho(){
-  const pg=document.getElementById('page-julho');pg.dataset.built='1';
-  pg.innerHTML=`${progCard('jl-lbl','jl-pct','jl-bar')}<div id="julho-summary"></div>
-    <div class="card"><div class="card-hd"><span class="card-title">Receitas</span></div>${JULHO_R.map(f=>inputRow(f.label,f.id,f.val,f.badge,'updJulho()')).join('')}</div>
-    <div class="card"><div class="card-hd"><span class="card-title">Contas de julho</span></div>${JULHO_C.map(c=>checkRow(c.key,c.label,c.val,c.pago,c.edit,c.ph,'jl','updJulho()')).join('')}</div>
-    <div id="julho-alert" style="display:none"></div>
-    ${faturaHtml(FATURA_JUNHO)}
-    <div class="card"><div class="card-hd"><span class="card-title">Distribuição fatura — Junho 2026</span><span class="card-total">${fBR(FATURA_JUNHO.total)}</span></div>
-      <div class="pie-wrap"><div class="pie-canvas-wrap"><canvas id="pie-julho" height="180"></canvas></div><div class="pie-legend" id="pie-legend-julho"></div></div>
-    </div>
-    <div class="btn-row"><button class="btn btn-p" onclick="salvar('julho')">Salvar julho</button></div>
-    <div id="julho-msg" style="display:none"></div>`;
-  updJulho();
-  buildPie('pie-julho','pie-legend-julho',FATURA_JUNHO.categorias);
-}
+function buildJulho(){const pg=document.getElementById('page-julho');pg.dataset.built='1';pg.innerHTML=`${progCard('jl-lbl','jl-pct','jl-bar')}<div id="julho-summary"></div><div class="card"><div class="card-hd"><span class="card-title">Receitas</span></div>${JULHO_R.map(f=>inputRow(f.label,f.id,f.val,f.badge,'updJulho()')).join('')}</div><div class="card"><div class="card-hd"><span class="card-title">Contas de julho</span></div>${JULHO_C.map(c=>checkRow(c.key,c.label,c.val,c.pago,c.edit,c.ph,'jl','updJulho()')).join('')}</div><div id="julho-alert" style="display:none"></div>${faturaHtml(FATURA_JUNHO)}${cardChartsHtml('jul')}<div class="btn-row"><button class="btn btn-p" onclick="salvar('julho')">Salvar julho</button></div><div id="julho-msg" style="display:none"></div>`;updJulho();buildPie('jul-pie','jul-pielegend',FATURA_JUNHO.categorias);buildCartaoBar('jul-bar');}
 
-/* ── AGOSTO ── */
-const AGOSTO_C=[
-  {key:'aluguel',label:'Aluguel',val:'1.883,11',pago:true,edit:false},
-  {key:'cond',label:'Condomínio',val:'689,13',pago:true,edit:false},
-  {key:'iptu',label:'IPTU',val:'305,76',pago:true,edit:false},
-  {key:'luz',label:'Luz',val:'374,93',pago:false,edit:false},
-  {key:'internet',label:'Internet + celular',val:'363,77',pago:true,edit:false},
-  {key:'terapia',label:'Terapia',val:'',pago:false,edit:true,ph:'pendente'},
-  {key:'cartao',label:'Fatura cartão Inter',val:'3.271,38',pago:true,edit:false},
-];
-const AGOSTO_R=[
-  {id:'ag-salario',label:'Salário (Itaú — recebido em julho)',val:'0,00',badge:'auto'},
-  {id:'ag-vr',label:'Vale refeição',val:'990,00',badge:'rep'},
-  {id:'ag-vho',label:'Vale home office',val:'100,00',badge:'rep'},
-  {id:'ag-paula',label:'Paula (parcial até 10/08)',val:'1.282,85',badge:'auto'},
-];
-function getAgosto(){const g=id=>pBR(document.getElementById(id)?.value||'0');const ter=document.getElementById('agv-terapia');return{salario:g('ag-salario'),vr:g('ag-vr'),vho:g('ag-vho'),paula:g('ag-paula'),aluguel:1883.11,cond:689.13,iptu:305.76,luz:374.93,internet:363.77,terapia:ter?pBR(ter.value):0,cartao:3271.38};}
+/* AGOSTO */
+const AGOSTO_C=[{key:'aluguel',label:'Aluguel',val:'1.883,11',pago:true,edit:false},{key:'cond',label:'Condomínio',val:'689,13',pago:true,edit:false},{key:'iptu',label:'IPTU',val:'305,76',pago:true,edit:false},{key:'luz',label:'Luz',val:'374,93',pago:false,edit:false},{key:'internet',label:'Internet + celular',val:'363,77',pago:true,edit:false},{key:'terapia',label:'Terapia',val:'',pago:false,edit:true,ph:'pendente'},{key:'cartao',label:'Fatura Inter + Personnalité',val:'4.013,68',pago:true,edit:false}];
+const AGOSTO_R=[{id:'ag-salario',label:'Salário (Itaú — recebido em julho)',val:'0,00',badge:'auto'},{id:'ag-vr',label:'Vale refeição',val:'990,00',badge:'rep'},{id:'ag-vho',label:'Vale home office',val:'100,00',badge:'rep'},{id:'ag-paula',label:'Paula (parcial até 10/08)',val:'1.282,85',badge:'auto'}];
+function getAgosto(){const g=id=>pBR(document.getElementById(id)?.value||'0');const t=document.getElementById('agv-terapia');return{salario:g('ag-salario'),vr:g('ag-vr'),vho:g('ag-vho'),paula:g('ag-paula'),aluguel:1883.11,cond:689.13,iptu:305.76,luz:374.93,internet:363.77,terapia:t?pBR(t.value):0,cartao:4013.68};}
 function updAgosto(){updProg(AGOSTO_C,'ag','agosto-alert','ag-lbl','ag-pct','ag-bar');document.getElementById('agosto-summary').innerHTML=summaryHtml(getAgosto(),27764.26,122447.52,'Saldo atual (10/08)');}
-function buildAgosto(){
-  const pg=document.getElementById('page-agosto');pg.dataset.built='1';
-  pg.innerHTML=`<div class="alert a-info">Agosto parcial — mês em andamento. Salário do Itaú e terapia pendentes. Luz em débito automático (R$ 374,93).</div>
-    ${progCard('ag-lbl','ag-pct','ag-bar')}<div id="agosto-summary"></div>
-    <div class="card"><div class="card-hd"><span class="card-title">Receitas</span></div>${AGOSTO_R.map(f=>inputRow(f.label,f.id,f.val,f.badge,'updAgosto()')).join('')}</div>
-    <div class="card"><div class="card-hd"><span class="card-title">Contas de agosto</span></div>${AGOSTO_C.map(c=>checkRow(c.key,c.label,c.val,c.pago,c.edit,c.ph,'ag','updAgosto()')).join('')}</div>
-    <div id="agosto-alert" style="display:none"></div>
-    <div class="btn-row"><button class="btn btn-p" onclick="salvar('agosto')">Salvar agosto</button></div>
-    <div id="agosto-msg" style="display:none"></div>`;
-  updAgosto();
-}
+function buildAgosto(){const pg=document.getElementById('page-agosto');pg.dataset.built='1';pg.innerHTML=`<div class="alert a-info">Agosto parcial — mês em andamento. Salário do Itaú e terapia pendentes. Luz em débito automático.</div>${progCard('ag-lbl','ag-pct','ag-bar')}<div id="agosto-summary"></div><div class="card"><div class="card-hd"><span class="card-title">Receitas</span></div>${AGOSTO_R.map(f=>inputRow(f.label,f.id,f.val,f.badge,'updAgosto()')).join('')}</div><div class="card"><div class="card-hd"><span class="card-title">Contas de agosto</span></div>${AGOSTO_C.map(c=>checkRow(c.key,c.label,c.val,c.pago,c.edit,c.ph,'ag','updAgosto()')).join('')}</div><div id="agosto-alert" style="display:none"></div>${faturaHtml(FATURA_JULHO)}${faturaHtml(FATURA_PERS_JULHO)}${cardChartsHtml('ago')}<div class="btn-row"><button class="btn btn-p" onclick="salvar('agosto')">Salvar agosto</button></div><div id="agosto-msg" style="display:none"></div>`;updAgosto();buildPie('ago-pie','ago-pielegend',FATURA_JULHO.categorias);buildCartaoBar('ago-bar');}
 
-/* ── GRÁFICOS ── */
-const PALETTE=['#1D9E75','#185FA5','#BA7517','#E24B4A','#534AB7','#639922','#D85A30','#D4537E','#888780','#378ADD','#0F6E56','#854F0B'];
-
-function buildPie(canvasId,legendId,cats){
-  const isDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches;
-  const total=cats.reduce((s,c)=>s+c.total,0);
-  new Chart(document.getElementById(canvasId).getContext('2d'),{type:'doughnut',data:{labels:cats.map(c=>c.nome),datasets:[{data:cats.map(c=>c.total),backgroundColor:PALETTE,borderWidth:2,borderColor:isDark?'#1E1E1E':'#FFFFFF',hoverOffset:6}]},options:{responsive:true,cutout:'56%',plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+fBR(ctx.parsed)+' ('+(ctx.parsed/total*100).toFixed(1)+'%)'}}}}}});
-  document.getElementById(legendId).innerHTML=cats.map((c,i)=>`<div class="pie-legend-item"><div class="pie-dot" style="background:${PALETTE[i]}"></div><span>${c.nome} <strong style="color:var(--text)">${(c.total/total*100).toFixed(1)}%</strong></span></div>`).join('');
+/* GRÁFICOS with grouped/stacked toggle */
+const MESES_G=[{mes:'Maio 2026',df:5795.06,ct:5020.93},{mes:'Junho 2026',df:5810.31,ct:6148.47},{mes:'Julho 2026',df:4858.11,ct:7692.21},{mes:'Agosto 2026',df:3616.70,ct:4013.68}];
+let barChart=null,barMode='grouped';
+function drawBar(){
+  const tc='#898781',gc=dark()?'#2c2c2a':'#e1e0d9';
+  if(barChart)barChart.destroy();
+  const stacked=barMode==='stacked';
+  barChart=new Chart(document.getElementById('g-bar').getContext('2d'),{type:'bar',data:{labels:MESES_G.map(m=>m.mes),datasets:[{label:'Despesas fixas',data:MESES_G.map(m=>m.df),backgroundColor:'#2a78d6',borderRadius:4,borderSkipped:false},{label:'Fatura cartão',data:MESES_G.map(m=>m.ct),backgroundColor:'#1baf7a',borderRadius:4,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+ctx.dataset.label+': '+fBR(ctx.parsed.y)}}},scales:{x:{stacked,ticks:{color:tc,font:{size:12}},grid:{display:false},border:{display:false}},y:{stacked,ticks:{color:tc,font:{size:11},callback:v=>'R$ '+Number(v).toLocaleString('pt-BR',{maximumFractionDigits:0})},grid:{color:gc},border:{display:false}}}}});
 }
+function setBarMode(m){barMode=m;document.getElementById('seg-grouped').classList.toggle('on',m==='grouped');document.getElementById('seg-stacked').classList.toggle('on',m==='stacked');drawBar();}
+function buildGraficos(){const pg=document.getElementById('page-graficos');pg.dataset.built='1';pg.innerHTML=`<div class="card"><div class="card-hd"><span class="card-title">Gastos totais por mês</span><div class="seg"><button id="seg-grouped" class="on" onclick="setBarMode('grouped')">Lado a lado</button><button id="seg-stacked" onclick="setBarMode('stacked')">Empilhado</button></div></div><div style="padding:8px 18px 4px"><div style="display:flex;gap:14px;font-size:12px;color:var(--text-2);margin-bottom:8px"><span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#2a78d6"></span>Despesas fixas</span><span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#1baf7a"></span>Fatura cartão</span></div><div style="position:relative;height:240px"><canvas id="g-bar" role="img" aria-label="Gráfico de despesas fixas e fatura por mês"></canvas></div></div></div>`;drawBar();}
 
-const MESES_GRAFICO=[
-  {mes:'Maio 2026',despesasFixas:5795.06,cartao:5020.93},
-  {mes:'Junho 2026',despesasFixas:5810.31,cartao:6148.47},
-  {mes:'Julho 2026',despesasFixas:4658.01,cartao:7692.21},
-  {mes:'Agosto 2026',despesasFixas:3616.70,cartao:3271.38},
-];
+/* Supabase */
+async function loadH(){try{const r=await fetch(SUPA_URL+'/rest/v1/meses?select=id,dados&order=id',{headers:SUPA_HDR});if(!r.ok)return[];return(await r.json()).map(x=>x.dados);}catch(e){return[];}}
+async function saveH(e){await fetch(SUPA_URL+'/rest/v1/meses',{method:'POST',headers:{...SUPA_HDR,'Prefer':'resolution=merge-duplicates'},body:JSON.stringify({id:e.mesKey,dados:e,atualizado_em:new Date().toISOString()})});}
+async function salvar(mes){let f,k,l;if(mes==='maio'){f=getMaio();k='2026-05';l='Maio 2026';}else if(mes==='junho'){f=getJunho();k='2026-06';l='Junho 2026';}else if(mes==='julho'){f=getJulho();k='2026-07';l='Julho 2026';}else{f=getAgosto();k='2026-08';l='Agosto 2026';}const m=document.getElementById(mes+'-msg');if(m){m.style.display='block';m.className='alert a-info';m.textContent='Salvando...';}await saveH({mes:l,mesKey:k,fields:f});toast(l+' salvo.');if(m){m.className='alert a-ok';m.textContent='Salvo com sucesso.';setTimeout(()=>m.style.display='none',2500);}}
 
-function buildGraficos(){
-  const pg=document.getElementById('page-graficos');pg.dataset.built='1';
-  const isDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches;
-  const textCol=isDark?'rgba(240,240,240,0.6)':'rgba(0,0,0,0.45)';
-  const gridCol=isDark?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.06)';
-  pg.innerHTML=`<div class="card"><div class="card-hd"><span class="card-title">Gastos totais por mês</span></div><div style="padding:16px 18px"><canvas id="bar-chart" height="220"></canvas></div></div>`;
-  new Chart(document.getElementById('bar-chart').getContext('2d'),{type:'bar',data:{labels:MESES_GRAFICO.map(m=>m.mes),datasets:[{label:'Despesas fixas',data:MESES_GRAFICO.map(m=>m.despesasFixas),backgroundColor:'#185FA5',borderRadius:5,borderSkipped:false},{label:'Fatura cartão',data:MESES_GRAFICO.map(m=>m.cartao),backgroundColor:'#1D9E75',borderRadius:5,borderSkipped:false}]},options:{responsive:true,plugins:{legend:{position:'bottom',labels:{color:textCol,boxWidth:12,boxHeight:12,borderRadius:6,useBorderRadius:true,padding:16,font:{size:12}}},tooltip:{callbacks:{label:ctx=>' '+ctx.dataset.label+': '+fBR(ctx.parsed.y)}}},scales:{x:{ticks:{color:textCol,font:{size:12}},grid:{display:false},border:{display:false}},y:{ticks:{color:textCol,font:{size:11},callback:v=>'R$ '+Number(v).toLocaleString('pt-BR',{maximumFractionDigits:0})},grid:{color:gridCol},border:{display:false}}}}});
-}
-
-/* ── SUPABASE STORAGE ── */
-async function loadH(){
-  try{const res=await fetch(SUPA_URL+'/rest/v1/meses?select=id,dados&order=id',{headers:SUPA_HDR});if(!res.ok)return[];return(await res.json()).map(r=>r.dados);}catch(e){return[];}
-}
-async function saveH(entry){
-  await fetch(SUPA_URL+'/rest/v1/meses',{method:'POST',headers:{...SUPA_HDR,'Prefer':'resolution=merge-duplicates'},body:JSON.stringify({id:entry.mesKey,dados:entry,atualizado_em:new Date().toISOString()})});
-}
-async function salvar(mes){
-  let fields,key,label;
-  if(mes==='maio'){fields=getMaio();key='2026-05';label='Maio 2026';}
-  else if(mes==='junho'){fields=getJunho();key='2026-06';label='Junho 2026';}
-  else if(mes==='julho'){fields=getJulho();key='2026-07';label='Julho 2026';}
-  else{fields=getAgosto();key='2026-08';label='Agosto 2026';}
-  const msg=document.getElementById(mes+'-msg');
-  if(msg){msg.style.display='block';msg.className='alert a-info';msg.textContent='Salvando...';}
-  await saveH({mes:label,mesKey:key,fields});
-  toast(label+' salvo.');
-  if(msg){msg.className='alert a-ok';msg.textContent='Salvo com sucesso.';setTimeout(()=>msg.style.display='none',2500);}
-}
-
-/* ── HISTÓRICO ── */
 let ci=null;
-async function buildHist(){
-  const pg=document.getElementById('page-historico');pg.dataset.built='1';
-  pg.innerHTML=`<div class="alert a-info">Carregando...</div>`;
-  const h=await loadH();
-  if(h.length===0){pg.innerHTML=`<div class="alert a-info">Nenhum mês salvo ainda.</div>`;return;}
-  const isDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches;
-  const textCol=isDark?'rgba(240,240,240,0.6)':'rgba(0,0,0,0.45)';
-  const gridCol=isDark?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.06)';
-  const rows=h.map((e,i)=>{
-    const c=calc(e.fields);
-    const bg=c.sobrou>=0?'#E6F5EF':'#FCEAEA';
-    const col=c.sobrou>=0?'#0D6E52':'#9C2E2E';
-    let diff='';
-    if(i>0){const d=c.sobrou-calc(h[i-1].fields).sobrou;diff=`<span class="${d>=0?'dp':'dn'}">${fD(d)}</span>`;}
-    return`<tr><td style="font-weight:500">${e.mes}</td><td>${fBR(c.tot)}</td><td>${fBR(c.desp)}</td><td>${fBR(e.fields.cartao)}</td><td><span class="pill" style="background:${bg};color:${col}">${fBR(c.sobrou)}</span>${diff}</td></tr>`;
-  }).join('');
-  const chartHtml=h.length>=2?`<div class="card" style="margin-top:14px"><div class="card-hd"><span class="card-title">Evolução do saldo restante</span></div><div style="padding:16px 18px"><canvas id="hist-chart" height="180"></canvas></div></div>`:'';
-  pg.innerHTML=`<div class="card"><div class="card-hd"><span class="card-title">Meses salvos</span></div><table class="hist-table"><thead><tr><th>Mês</th><th>Salário</th><th>Despesas</th><th>Cartão</th><th>Sobrou</th></tr></thead><tbody>${rows}</tbody></table></div>${chartHtml}`;
-  if(h.length>=2){
-    if(ci)ci.destroy();
-    ci=new Chart(document.getElementById('hist-chart').getContext('2d'),{type:'line',data:{labels:h.map(x=>x.mes),datasets:[{label:'Sobrou',data:h.map(x=>Math.round(calc(x.fields).sobrou*100)/100),tension:.35,fill:true,borderColor:'#1D9E75',backgroundColor:'rgba(29,158,117,.08)',pointRadius:5,pointBackgroundColor:'#1D9E75',pointBorderColor:'#fff',pointBorderWidth:2}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{ticks:{callback:v=>'R$ '+v.toLocaleString('pt-BR'),color:textCol},grid:{color:gridCol},border:{display:false}},x:{ticks:{color:textCol},grid:{display:false},border:{display:false}}}}});
-  }
-}
+async function buildHist(){const pg=document.getElementById('page-historico');pg.dataset.built='1';pg.innerHTML=`<div class="alert a-info">Carregando...</div>`;const h=await loadH();if(h.length===0){pg.innerHTML=`<div class="alert a-info">Nenhum mês salvo ainda.</div>`;return;}const tc='#898781',gc=dark()?'#2c2c2a':'#e1e0d9';const rows=h.map((e,i)=>{const c=calc(e.fields);const bg=c.sobrou>=0?'#E6F5EF':'#FCEAEA';const col=c.sobrou>=0?'#0D6E52':'#9C2E2E';let d='';if(i>0){const df=c.sobrou-calc(h[i-1].fields).sobrou;d=`<span class="${df>=0?'dp':'dn'}">${fD(df)}</span>`;}return`<tr><td style="font-weight:500">${e.mes}</td><td>${fBR(c.tot)}</td><td>${fBR(c.desp)}</td><td>${fBR(e.fields.cartao)}</td><td><span class="pill" style="background:${bg};color:${col}">${fBR(c.sobrou)}</span>${d}</td></tr>`;}).join('');const ch=h.length>=2?`<div class="card" style="margin-top:14px"><div class="card-hd"><span class="card-title">Evolução do saldo restante</span></div><div style="padding:16px 18px;position:relative;height:200px"><canvas id="hist-chart" role="img" aria-label="Evolução do saldo restante"></canvas></div></div>`:'';pg.innerHTML=`<div class="card"><div class="card-hd"><span class="card-title">Meses salvos</span></div><table class="hist-table"><thead><tr><th>Mês</th><th>Salário</th><th>Despesas</th><th>Cartão</th><th>Sobrou</th></tr></thead><tbody>${rows}</tbody></table></div>${ch}`;if(h.length>=2){if(ci)ci.destroy();ci=new Chart(document.getElementById('hist-chart').getContext('2d'),{type:'line',data:{labels:h.map(x=>x.mes),datasets:[{label:'Sobrou',data:h.map(x=>Math.round(calc(x.fields).sobrou*100)/100),tension:.35,fill:true,borderColor:'#1baf7a',backgroundColor:'rgba(29,158,117,.08)',pointRadius:5,pointBackgroundColor:'#1baf7a',pointBorderColor:'#fff',pointBorderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{ticks:{callback:v=>'R$ '+v.toLocaleString('pt-BR'),color:tc},grid:{color:gc},border:{display:false}},x:{ticks:{color:tc},grid:{display:false},border:{display:false}}}}});}}
 
-function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2500);}
+function toast(m){const el=document.getElementById('toast');el.textContent=m;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2500);}
 </script>
 </body>
 </html>
