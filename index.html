@@ -100,19 +100,19 @@ input[type=checkbox]{width:15px;height:15px;cursor:pointer;accent-color:var(--gr
 <header class="topbar">
   <div class="brand"><div class="brand-icon">₢</div>Gastos Mensais</div>
   <nav class="topnav">
-    <button class="nav-btn active" onclick="showTab('maio')" id="tab-maio">Maio</button>
+    <button class="nav-btn" onclick="showTab('maio')" id="tab-maio">Maio</button>
     <button class="nav-btn" onclick="showTab('junho')" id="tab-junho">Junho</button>
     <button class="nav-btn" onclick="showTab('julho')" id="tab-julho">Julho</button>
-    <button class="nav-btn" onclick="showTab('agosto')" id="tab-agosto">Agosto</button>
+    <button class="nav-btn active" onclick="showTab('agosto')" id="tab-agosto">Agosto</button>
     <button class="nav-btn" onclick="showTab('graficos')" id="tab-graficos">Gráficos</button>
     <button class="nav-btn" onclick="showTab('historico')" id="tab-historico">Histórico</button>
   </nav>
 </header>
 <main class="main">
-  <div id="page-maio" class="page active"></div>
+  <div id="page-maio" class="page"></div>
   <div id="page-junho" class="page"></div>
   <div id="page-julho" class="page"></div>
-  <div id="page-agosto" class="page"></div>
+  <div id="page-agosto" class="page active"></div>
   <div id="page-graficos" class="page"></div>
   <div id="page-historico" class="page"></div>
 </main>
@@ -235,7 +235,7 @@ function buildJulho(){const pg=document.getElementById('page-julho');pg.dataset.
 
 /* AGOSTO */
 const AGOSTO_C=[{key:'aluguel',label:'Aluguel',val:'1.883,11',pago:true,edit:false},{key:'cond',label:'Condomínio',val:'689,13',pago:true,edit:false},{key:'iptu',label:'IPTU',val:'305,76',pago:true,edit:false},{key:'luz',label:'Luz',val:'374,93',pago:false,edit:false},{key:'internet',label:'Internet + celular',val:'363,77',pago:true,edit:false},{key:'terapia',label:'Terapia',val:'',pago:false,edit:true,ph:'pendente'},{key:'cartao',label:'Fatura Inter + Personnalité',val:'4.013,68',pago:true,edit:false}];
-const AGOSTO_R=[{id:'ag-salario',label:'Salário (Itaú — recebido em julho)',val:'0,00',badge:'auto'},{id:'ag-vr',label:'Vale refeição',val:'990,00',badge:'rep'},{id:'ag-vho',label:'Vale home office',val:'100,00',badge:'rep'},{id:'ag-paula',label:'Paula (parcial até 10/08)',val:'1.282,85',badge:'auto'}];
+const AGOSTO_R=[{id:'ag-salario',label:'Salário (Itaú — recebido em julho)',val:'13.981,77',badge:'auto'},{id:'ag-vr',label:'Vale refeição',val:'990,00',badge:'rep'},{id:'ag-vho',label:'Vale home office',val:'100,00',badge:'rep'},{id:'ag-paula',label:'Paula (parcial até 10/08)',val:'1.282,85',badge:'auto'}];
 function getAgosto(){const g=id=>pBR(document.getElementById(id)?.value||'0');const t=document.getElementById('agv-terapia');return{salario:g('ag-salario'),vr:g('ag-vr'),vho:g('ag-vho'),paula:g('ag-paula'),aluguel:1883.11,cond:689.13,iptu:305.76,luz:374.93,internet:363.77,terapia:t?pBR(t.value):0,cartao:4013.68};}
 function updAgosto(){updProg(AGOSTO_C,'ag','agosto-alert','ag-lbl','ag-pct','ag-bar');document.getElementById('agosto-summary').innerHTML=summaryHtml(getAgosto(),27764.26,122447.52,'Saldo atual (10/08)');}
 function buildAgosto(){const pg=document.getElementById('page-agosto');pg.dataset.built='1';pg.innerHTML=`<div class="alert a-info">Agosto parcial — mês em andamento. Salário do Itaú e terapia pendentes. Luz em débito automático.</div>${progCard('ag-lbl','ag-pct','ag-bar')}<div id="agosto-summary"></div><div class="card"><div class="card-hd"><span class="card-title">Receitas</span></div>${AGOSTO_R.map(f=>inputRow(f.label,f.id,f.val,f.badge,'updAgosto()')).join('')}</div><div class="card"><div class="card-hd"><span class="card-title">Contas de agosto</span></div>${AGOSTO_C.map(c=>checkRow(c.key,c.label,c.val,c.pago,c.edit,c.ph,'ag','updAgosto()')).join('')}</div><div id="agosto-alert" style="display:none"></div>${faturaHtml(FATURA_JULHO)}${faturaHtml(FATURA_PERS_JULHO)}${cardChartsHtml('ago')}<div class="btn-row"><button class="btn btn-p" onclick="salvar('agosto')">Salvar agosto</button></div><div id="agosto-msg" style="display:none"></div>`;updAgosto();buildPie('ago-pie','ago-pielegend',FATURA_JULHO.categorias);buildCartaoBar('ago-bar');}
@@ -261,6 +261,8 @@ let ci=null;
 async function buildHist(){const pg=document.getElementById('page-historico');pg.dataset.built='1';pg.innerHTML=`<div class="alert a-info">Carregando...</div>`;const h=await loadH();if(h.length===0){pg.innerHTML=`<div class="alert a-info">Nenhum mês salvo ainda.</div>`;return;}const tc='#898781',gc=dark()?'#2c2c2a':'#e1e0d9';const rows=h.map((e,i)=>{const c=calc(e.fields);const bg=c.sobrou>=0?'#E6F5EF':'#FCEAEA';const col=c.sobrou>=0?'#0D6E52':'#9C2E2E';let d='';if(i>0){const df=c.sobrou-calc(h[i-1].fields).sobrou;d=`<span class="${df>=0?'dp':'dn'}">${fD(df)}</span>`;}return`<tr><td style="font-weight:500">${e.mes}</td><td>${fBR(c.tot)}</td><td>${fBR(c.desp)}</td><td>${fBR(e.fields.cartao)}</td><td><span class="pill" style="background:${bg};color:${col}">${fBR(c.sobrou)}</span>${d}</td></tr>`;}).join('');const ch=h.length>=2?`<div class="card" style="margin-top:14px"><div class="card-hd"><span class="card-title">Evolução do saldo restante</span></div><div style="padding:16px 18px;position:relative;height:200px"><canvas id="hist-chart" role="img" aria-label="Evolução do saldo restante"></canvas></div></div>`:'';pg.innerHTML=`<div class="card"><div class="card-hd"><span class="card-title">Meses salvos</span></div><table class="hist-table"><thead><tr><th>Mês</th><th>Salário</th><th>Despesas</th><th>Cartão</th><th>Sobrou</th></tr></thead><tbody>${rows}</tbody></table></div>${ch}`;if(h.length>=2){if(ci)ci.destroy();ci=new Chart(document.getElementById('hist-chart').getContext('2d'),{type:'line',data:{labels:h.map(x=>x.mes),datasets:[{label:'Sobrou',data:h.map(x=>Math.round(calc(x.fields).sobrou*100)/100),tension:.35,fill:true,borderColor:'#1baf7a',backgroundColor:'rgba(29,158,117,.08)',pointRadius:5,pointBackgroundColor:'#1baf7a',pointBorderColor:'#fff',pointBorderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{ticks:{callback:v=>'R$ '+v.toLocaleString('pt-BR'),color:tc},grid:{color:gc},border:{display:false}},x:{ticks:{color:tc},grid:{display:false},border:{display:false}}}}});}}
 
 function toast(m){const el=document.getElementById('toast');el.textContent=m;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2500);}
+/* abrir no mês mais recente */
+showTab('agosto');
 </script>
 </body>
 </html>
