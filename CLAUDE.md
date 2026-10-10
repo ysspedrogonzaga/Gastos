@@ -16,7 +16,7 @@ App de página única (um arquivo `index.html`, sem build step) que rastreia rec
 Tudo vive num arquivo só (mais a pasta `fonts/`), em três blocos: `<style>`, marcação do topo/dock de abas, e um `<script>` no final. O padrão é **data-driven**: cada mês é descrito por arrays de configuração e renderizado por funções genéricas. Para adicionar um mês, adiciona-se dados + uma função `buildX`, não marcação nova.
 
 ### Abas
-`const TABS = ['maio','junho','julho','agosto','setembro','outubro','graficos','historico']`. A navegação é um dock flutuante (`.dock`) no rodapé; o indicador branco desliza via `moveDock()`. `showTab(t)` alterna a classe `active` nas abas e páginas e chama `buildMes(cfg)` / `buildGraficos()` na primeira visita (lazy render, controlado por `dataset.built`), seguido de `enterPage()` (entrada orquestrada). `buildHist()` também é lazy e lê de `MESES_CFG`. Ao carregar, o app abre no mês mais recente (`showTab(MESES_CFG.at(-1).key)`).
+`const TABS = ['maio','junho','julho','agosto','setembro','outubro','graficos','historico']`. Os meses ficam num dock flutuante (`.dock`) no rodapé, com nomes completos e rolagem horizontal dentro da pílula (`.dock-sc`, bordas esmaecidas por `dockEdges()`); o indicador branco desliza via `moveDock()` e some em Gráficos/Histórico. Gráficos e Histórico são links no topo (`.top-nav`, ao lado do wordmark "Gastos"). Os IDs `tab-<aba>` continuam iguais nos dois lugares. `showTab(t)` alterna a classe `active` nas abas e páginas e chama `buildMes(cfg)` / `buildGraficos()` na primeira visita (lazy render, controlado por `dataset.built`), seguido de `enterPage()` (entrada orquestrada). `buildHist()` também é lazy e lê de `MESES_CFG`. Ao carregar, o app abre no mês mais recente (`showTab(MESES_CFG.at(-1).key)`).
 
 ### Modelo de dados de um mês
 Cada mês salvo é um objeto:
@@ -30,7 +30,7 @@ Cada mês salvo é um objeto:
 
 ### Funções genéricas de render (reutilizar sempre)
 Cada mês é descrito em `MESES_CFG` (receitas, despesas, faturas, saldos, `mode:'input'|'contas'`, `parcial`, `infoAlert`) e renderizado por `buildMes(cfg)`; `recalcMes(cfg)` atualiza números no lugar (com contagem animada).
-- `heroHtml` → card preto com gradiente animado: "Sobrou/Faltou em [mês]", barra de composição das receitas. Fica bordô (`.is-neg`) quando o mês fecha negativo.
+- `heroHtml` → card "Resumo" (preto com gradiente animado). A barra de composição é um seletor: tocar numa fatia (ou na pílula da legenda) chama `setHeroView(K, 'sobra'|'fixas'|'cartao')` e `paintHero(cfg)` troca legenda, valor e variação. Sempre abre em `'sobra'` (`cfg._view` volta a `'sobra'` ao reentrar no mês). Fica bordô (`.is-neg`) quando o mês fecha negativo; o número só fica vermelho na visão "Faltou".
 - `summaryHtml(cfg)` → 4 cards brancos de métricas (receitas, despesas fixas, cartão, saldo) com variação vs. mês anterior.
 - `inputRow(label, id, val, badge, ev)` → linha editável. `badge` é `'auto'` ou `'rep'`.
 - `checkRow(key,label,val,pago,edit,ph,prefix,ev,prevVal)` → conta com check "pago". `prefix` isola os IDs por mês (ex.: `j`, `jl`, `ag`).
