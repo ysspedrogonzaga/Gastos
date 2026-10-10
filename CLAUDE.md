@@ -9,14 +9,14 @@ App de página única (um arquivo `index.html`, sem build step) que rastreia rec
 - Repositório: `github.com/ysspedrogonzaga/Gastos` (arquivo servido: `index.html`)
 - Deploy: automático pelo GitHub Pages ao dar push na branch `main`
 - Stack: HTML + CSS + JavaScript puro (vanilla), Motion (versão vanilla do Framer Motion, `motion@11.18.2` via CDN, global `Motion`) para micro-interações. Gráficos em SVG próprio (sem Chart.js). Sem framework, sem bundler.
-- Fonte: Neue Montreal (Light 300, Regular 400, Bold 700) servida de `fonts/`. Light para display e números grandes, Regular para o resto.
+- Fonte: Neue Montreal (Regular 400, Bold 700) servida de `fonts/`. Não usar o peso Light (300); o mínimo é Regular.
 
 ## Arquitetura do arquivo `index.html`
 
 Tudo vive num arquivo só (mais a pasta `fonts/`), em três blocos: `<style>`, marcação do topo/dock de abas, e um `<script>` no final. O padrão é **data-driven**: cada mês é descrito por arrays de configuração e renderizado por funções genéricas. Para adicionar um mês, adiciona-se dados + uma função `buildX`, não marcação nova.
 
 ### Abas
-`const TABS = ['maio','junho','julho','agosto','graficos','historico']`. A navegação é um dock flutuante (`.dock`) no rodapé; o indicador branco desliza via `moveDock()`. `showTab(t)` alterna a classe `active` nas abas e páginas e chama `buildMes(cfg)` / `buildGraficos()` na primeira visita (lazy render, controlado por `dataset.built`), seguido de `enterPage()` (entrada orquestrada). `buildHist()` também é lazy e lê de `MESES_CFG`. Ao carregar, o app abre no mês mais recente (`showTab(MESES_CFG.at(-1).key)`).
+`const TABS = ['maio','junho','julho','agosto','setembro','outubro','graficos','historico']`. A navegação é um dock flutuante (`.dock`) no rodapé; o indicador branco desliza via `moveDock()`. `showTab(t)` alterna a classe `active` nas abas e páginas e chama `buildMes(cfg)` / `buildGraficos()` na primeira visita (lazy render, controlado por `dataset.built`), seguido de `enterPage()` (entrada orquestrada). `buildHist()` também é lazy e lê de `MESES_CFG`. Ao carregar, o app abre no mês mais recente (`showTab(MESES_CFG.at(-1).key)`).
 
 ### Modelo de dados de um mês
 Cada mês salvo é um objeto:
@@ -85,9 +85,9 @@ Estas regras são a lógica central da planilha. Um erro aqui gera números erra
 - Aluguel → ERA EMPREENDIMENTOS IMOBILIARIOS LTDA
 - Condomínio → PJBANK **ou** PARTNERBANK (mudança de sistema; ambos = condomínio)
 - IPTU → PM BELO HORIZONTE / MUNICIPIO DE BELO HORIZONTE
-- Luz → CEMIG DISTRIBUICAO SA
+- Luz → CEMIG DISTRIBUICAO SA (Pix) **ou** "Debito automatico: 008133442437" (débito automático da CEMIG, ~dia 11, paga a conta do mês anterior). O app da CEMIG mostra cada conta pelo mês de referência; aqui vale a data do pagamento
 - Internet + Celular → CLARO SA
-- Terapia → Julia Maria Pereira Alves (valor variável, às vezes pula mês)
+- Terapia → DIALOGO PSI (desde set/2026; antes Julia Maria Pereira Alves). Valor variável; às vezes paga meses atrasados de uma vez
 - Fatura cartão Inter → "Debito Automatico Fatura Cartao Inter"
 
 ## Fluxo mensal de atualização (o que muda a cada mês)
@@ -99,11 +99,14 @@ Estas regras são a lógica central da planilha. Um erro aqui gera números erra
 5. No código: adicionar objeto `FATURA_X` (com `banco` e `prev`), uma entrada em `MESES_CFG` (gráficos e histórico se atualizam sozinhos), entrada em `TABS`, uma `<section id="page-x">` e um botão no dock. Seguir o padrão de um mês existente (agosto é o mais completo: tem fatura + Personnalité + charts).
 6. Testar local (abrir o arquivo no browser), depois `git add . && git commit && git push` a partir de `main` → deploy automático.
 
-## Estado atual dos dados (até agosto/2026)
+## Estado atual dos dados (até outubro/2026)
 
-- **Maio, Junho, Julho:** fechados.
-- **Agosto:** parcial (até 10/08). Salário = R$ 13.981,77 recebido em julho (defasagem). Pendentes: luz (débito automático R$ 374,93), terapia. Cartão de agosto = Inter julho (R$ 4.687,38 no detalhe / R$ 3.271,38 no débito) + Personnalité (R$ 742,30).
-- **Pendências conhecidas:** terapia de junho e julho (Julia não passou valores); itens "Loja Lourdes" e "TicketCard" ainda sem categoria (estão em Outros); parcela ADIDA 02/02 (R$ 150,00) cai na fatura de setembro.
+- **Maio a Setembro:** fechados. Agosto fechado em 10/10/2026 com o extrato Inter (Paula R$ 1.633,05; saldo final R$ 116.616,07).
+- **Setembro:** salário R$ 13.981,77 (recebido em agosto). Cartão = Inter R$ 6.610,11 (`FATURA_AGOSTO`, compras de agosto, vence 07/09, débito 08/09) + Personnalité R$ 149,99 (03/09, sem detalhamento) = R$ 6.760,10. Terapia R$ 1.440,00 = 2 Pix "DIALOGO PSI" em 10/09; os R$ 1.260 quitam dois meses atrasados (confirmado pelo Pedro). Luz R$ 711,99 = duas contas CEMIG pagas no mês: agosto (R$ 357,99, débito automático 11/09) e setembro (R$ 354,00, Pix 10/09). Não houve pagamento em dobro.
+- **Outubro:** parcial (até 10/10). Salário R$ 16.552,21 (inclui férias pagas em 03/09). Cartão = Inter R$ 5.766,10 (`FATURA_SETEMBRO`, compras de setembro, vence 07/10); Personnalité zerada. Aluguel agendado para 13/10 (conta como pago). Terapia pendente.
+- **Luz por mês de referência (app CEMIG):** mar R$ 347,53 · abr R$ 335,16 · mai R$ 323,67 · jun R$ 393,94 · jul R$ 374,93 · ago R$ 357,99 · set R$ 354,00 · out R$ 329,73. A conta de outubro foi paga por Pix em 10/10, mas ainda aparece em débito automático no app da CEMIG (risco de pagar duas vezes).
+- **Categorias:** "Compras para a Paula" (ex.: Sephora R$ 212,00 em set/2026, reembolsada por Pix da Paula no mesmo dia, que entra como receita "Paula"). Despesas pontuais de férias vão em "Viagem e hospedagem".
+- **Pendências conhecidas:** Paula de julho não conferida (o extrato começa em 13/07); itens "Loja Lourdes", "TicketCard", "Piscinas", "Fabiola Barbosa Godinh", "Snapfast" ficam em Outros (o Pedro não sabe do que se tratam); "Tabaco" (R$ 185,00, fatura de agosto) também está em Outros, a confirmar.
 
 ## Sugestões de melhoria (se o Pedro pedir)
 

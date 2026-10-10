@@ -8,10 +8,8 @@
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
 <title>Gastos — Pedro Jota</title>
-<link rel="preload" href="fonts/NeueMontreal-Light.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="fonts/NeueMontreal-Regular.ttf" as="font" type="font/ttf" crossorigin>
 <style>
-@font-face{font-family:'Neue Montreal';src:url('fonts/NeueMontreal-Light.ttf') format('truetype');font-weight:300;font-style:normal;font-display:swap}
 @font-face{font-family:'Neue Montreal';src:url('fonts/NeueMontreal-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:'Neue Montreal';src:url('fonts/NeueMontreal-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap}
 
@@ -45,7 +43,7 @@ button,input{font:inherit;color:inherit}
 
 /* display, fora dos cards */
 .disp{display:grid;grid-template-columns:1fr minmax(0,380px);align-items:end;gap:20px 48px;padding:clamp(44px,8vw,112px) 0 clamp(28px,4vw,48px)}
-.disp h1{font-weight:300;font-size:clamp(76px,14.5vw,216px);line-height:.84;letter-spacing:-.058em;margin-left:-.05em}
+.disp h1{font-weight:400;font-size:clamp(76px,14.5vw,216px);line-height:.84;letter-spacing:-.058em;margin-left:-.05em}
 .mask{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
 .mask-in{display:block}
 .disp p{font-size:clamp(17px,1.45vw,20px);line-height:1.38;color:var(--t2);max-width:36ch;padding-bottom:.5em}
@@ -72,7 +70,7 @@ button,input{font:inherit;color:inherit}
 .sub{font-size:15px;color:var(--t2);margin-top:4px;line-height:1.4}
 
 /* números grandes: R$ e centavos em sobrescrito */
-.big,.num,.big-m{font-weight:300;letter-spacing:-.05em;line-height:.9;white-space:nowrap;font-feature-settings:'tnum' 1}
+.big,.num,.big-m{font-weight:400;letter-spacing:-.05em;line-height:.9;white-space:nowrap;font-feature-settings:'tnum' 1}
 .big{font-size:clamp(60px,16.5cqi,176px)}
 .num{font-size:clamp(40px,18cqi,72px)}
 .big-m{font-size:clamp(72px,32cqi,148px)}
@@ -141,14 +139,14 @@ button,input{font:inherit;color:inherit}
 .rows .row:first-child{border-top:none}
 .row-label{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;font-size:16px;transition:color .4s}
 .row-right{display:flex;align-items:center;gap:14px;flex:none}
-.row-val{font-size:18px;font-weight:300;letter-spacing:-.01em;white-space:nowrap;transition:color .4s}
+.row-val{font-size:18px;font-weight:400;letter-spacing:-.01em;white-space:nowrap;transition:color .4s}
 .row.paid .row-label,.row.paid .row-val{color:var(--t3)}
 .row-total{border-top:none;background:var(--total-fill);border-radius:16px;padding:14px 16px;margin:10px -8px 0;min-height:0}
 .row-total .row-val{font-size:22px}
 .tag{font-size:12px;line-height:1;padding:5px 9px;border-radius:99px;white-space:nowrap;color:var(--t2)}
 .tag-auto{background:var(--card-2)}
 .tag-rep{box-shadow:inset 0 0 0 1px var(--line)}
-.in{width:8.4em;text-align:right;font-size:18px;font-weight:300;letter-spacing:-.01em;background:transparent;border:0;border-bottom:1px solid var(--line);padding:6px 2px;border-radius:0;transition:border-color .25s}
+.in{width:8.4em;text-align:right;font-size:18px;font-weight:400;letter-spacing:-.01em;background:transparent;border:0;border-bottom:1px solid var(--line);padding:6px 2px;border-radius:0;transition:border-color .25s}
 .in:hover{border-bottom-color:var(--t3)}
 .in:focus{outline:none;border-bottom-color:var(--t1)}
 .in::placeholder{color:var(--t3)}
@@ -170,7 +168,7 @@ button,input{font:inherit;color:inherit}
 .cat-share{display:block;height:3px;border-radius:99px;background:var(--card-2);max-width:200px;overflow:hidden}
 .cat-share i{display:block;height:100%;background:var(--t1);border-radius:99px}
 .cat-right{display:flex;align-items:center;gap:14px;flex:none}
-.cat-val{font-size:18px;font-weight:300;letter-spacing:-.01em;white-space:nowrap}
+.cat-val{font-size:18px;font-weight:400;letter-spacing:-.01em;white-space:nowrap}
 .cat-chev{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--card-2);transition:transform .45s var(--ease),background .25s}
 .cat-chev svg{width:12px;height:12px;fill:none;stroke:var(--t1);stroke-width:1.6;transition:stroke .25s}
 .cat-chev.open{transform:rotate(180deg)}
@@ -205,7 +203,7 @@ button,input{font:inherit;color:inherit}
 .tbl{width:100%;border-collapse:collapse;min-width:640px}
 .tbl th{text-align:right;font-weight:400;font-size:14px;color:var(--t2);padding:0 0 14px}
 .tbl th:first-child,.tbl td:first-child{text-align:left}
-.tbl td{text-align:right;padding:16px 0;border-top:1px solid var(--line);font-size:17px;font-weight:300;white-space:nowrap}
+.tbl td{text-align:right;padding:16px 0;border-top:1px solid var(--line);font-size:17px;font-weight:400;white-space:nowrap}
 .tbl td:first-child{font-weight:400;font-size:16px}
 .sob{display:inline-flex;align-items:center;gap:10px}
 .pill{display:inline-block;padding:5px 12px;border-radius:99px;font-weight:400;font-size:15px}
@@ -236,6 +234,8 @@ button,input{font:inherit;color:inherit}
   <section id="page-junho" class="page"></section>
   <section id="page-julho" class="page"></section>
   <section id="page-agosto" class="page"></section>
+  <section id="page-setembro" class="page"></section>
+  <section id="page-outubro" class="page"></section>
   <section id="page-graficos" class="page"></section>
   <section id="page-historico" class="page"></section>
 </main>
@@ -246,6 +246,8 @@ button,input{font:inherit;color:inherit}
     <button class="dock-btn press" onclick="showTab('junho')" id="tab-junho"><span class="l">Junho</span><span class="s">Jun</span></button>
     <button class="dock-btn press" onclick="showTab('julho')" id="tab-julho"><span class="l">Julho</span><span class="s">Jul</span></button>
     <button class="dock-btn press" onclick="showTab('agosto')" id="tab-agosto"><span class="l">Agosto</span><span class="s">Ago</span></button>
+    <button class="dock-btn press" onclick="showTab('setembro')" id="tab-setembro"><span class="l">Setembro</span><span class="s">Set</span></button>
+    <button class="dock-btn press" onclick="showTab('outubro')" id="tab-outubro"><span class="l">Outubro</span><span class="s">Out</span></button>
     <button class="dock-btn press" onclick="showTab('graficos')" id="tab-graficos"><span class="l">Gráficos</span><span class="s">Gráficos</span></button>
     <button class="dock-btn press" onclick="showTab('historico')" id="tab-historico"><span class="l">Histórico</span><span class="s">Histórico</span></button>
   </div>
@@ -294,7 +296,7 @@ function deltaHTML(d,kind,ref){
 }
 
 /* ── Abas ── */
-const TABS=['maio','junho','julho','agosto','graficos','historico'];
+const TABS=['maio','junho','julho','agosto','setembro','outubro','graficos','historico'];
 function showTab(t){
   const pg=$('page-'+t),was=pg.classList.contains('active');
   TABS.forEach(n=>{const b=$('tab-'+n);b.classList.toggle('active',n===t);n===t?b.setAttribute('aria-current','page'):b.removeAttribute('aria-current');$('page-'+n).classList.toggle('active',n===t);});
@@ -411,6 +413,36 @@ const FATURA_PERS_JULHO={banco:'Personnalité',total:742.30,mes:'Julho 2026',ven
   {id:'pj-esporte',nome:'Esporte',total:159.97,itens:[{n:'Adidas',v:9.97},{n:'Adidas (PayU parc 01/02)',v:150.00}]},
   {id:'pj-outros',nome:'Outros',total:180.00,itens:[{n:'JulianaGomesDe',v:180.00}]}
 ]};
+const FATURA_AGOSTO={banco:'Inter',total:6610.11,mes:'Agosto 2026',venc:'07/09/2026',prev:FATURA_JULHO,categorias:[
+  {id:'ag-transp',nome:'Transporte',total:859.70,itens:[{n:'Uber (×16)',v:451.51},{n:'99 (×14)',v:285.03},{n:'POP (13/08)',v:92.16},{n:'Ônibus BH (×2)',v:25.00},{n:'Metrô BH',v:6.00}]},
+  {id:'ag-merc',nome:'Mercado',total:1212.30,itens:[{n:'Supermercados BH (×5)',v:556.11},{n:'Epa (×11)',v:458.89},{n:'Supermercado e Padaria (×2)',v:102.14},{n:'Oba Hortifruti',v:58.38},{n:'Mart Plus',v:36.78}]},
+  {id:'ag-comida',nome:'Comida e bebida',total:1638.35,itens:[{n:'Peixe Frito (×6)',v:321.86},{n:'Gata Gorda',v:319.79},{n:'Kaboshi Restaurante',v:319.20},{n:'Outback',v:96.46},{n:'Armazém e Empório (×2)',v:76.50},{n:'Hotzone (×2)',v:76.00},{n:"McDonald's",v:60.70},{n:'Tuna (Qlub)',v:52.90},{n:'Zé Delivery',v:49.70},{n:'IFD Sub Contorno',v:45.98},{n:'Kuai Sushi Poke',v:42.00},{n:'IFD Brasal Bar',v:40.89},{n:'SP Belo Horizonte 2002',v:39.47},{n:'Mercado das Flores',v:25.00},{n:'Distribuidora 1001',v:24.90},{n:'Santo Grão Morumbi',v:23.00},{n:'Açaí Flecha',v:13.00},{n:'Café Jetiboca',v:11.00}]},
+  {id:'ag-hosp',nome:'Viagem e hospedagem',total:965.51,itens:[{n:'GOL parc 01/03',v:508.52},{n:'AIRBNB parc 03/06',v:304.87},{n:'Taxa de embarque',v:142.12},{n:'Ibis Budget SP Morumbi',v:10.00}]},
+  {id:'ag-lazer',nome:'Lazer e entretenimento',total:813.10,itens:[{n:'PlayStation',v:546.90},{n:'Ticketmaster parc 01/03',v:153.70},{n:'Shotgun (Veraz Cultura)',v:112.50}]},
+  {id:'ag-assin',nome:'Assinaturas',total:326.42,itens:[{n:'Claude Pro (Assinatura)',v:110.00},{n:'LinkedIn',v:104.98},{n:'Apple.com (×3)',v:46.79},{n:'Spotify',v:40.90},{n:'Amazon',v:19.90},{n:'IOF Internacional',v:3.85}]},
+  {id:'ag-mob',nome:'Mobilidade urbana',total:265.48,itens:[{n:'JETSHR (×22)',v:137.47},{n:'JET Patinetes (×19)',v:118.02},{n:'URENTCAR',v:9.99}]},
+  {id:'ag-saude',nome:'Saúde',total:90.00,itens:[{n:'Seu Elias Barba Cabelo',v:90.00}]},
+  {id:'ag-compras',nome:'Compras online',total:64.80,itens:[{n:'Mercado*CasaDoPriFrCo',v:54.90},{n:'Mercado Livre + (Assinatura)',v:9.90}]},
+  {id:'ag-vest',nome:'Vestuário',total:59.90,itens:[{n:'Youcom',v:59.90}]},
+  {id:'ag-mat',nome:'Materiais',total:9.90,itens:[{n:'LF Material Construção',v:9.90}]},
+  {id:'ag-comb',nome:'Combustível',total:1.00,itens:[{n:'Posto Santo Agostinho',v:1.00}]},
+  {id:'ag-outros',nome:'Outros',total:303.65,itens:[{n:'Tabaco',v:185.00},{n:'NUV*ODODUA parc 02/02',v:118.65}]}
+]};
+const FATURA_SETEMBRO={banco:'Inter',total:5766.10,mes:'Setembro 2026',venc:'07/10/2026',prev:FATURA_AGOSTO,categorias:[
+  {id:'st-transp',nome:'Transporte',total:711.51,itens:[{n:'99 (×21)',v:451.60},{n:'Uber (×9)',v:168.61},{n:'POP (15/09)',v:91.30}]},
+  {id:'st-merc',nome:'Mercado',total:1147.96,itens:[{n:'Epa (×14)',v:599.89},{n:'Assaí Atacadista (×2)',v:262.00},{n:'Zona Sul',v:150.97},{n:'Supermercados BH',v:130.11},{n:'Becamax E-Market',v:4.99}]},
+  {id:'st-comida',nome:'Comida e bebida',total:1290.63,itens:[{n:'Peixe Frito (×3)',v:206.08},{n:'Panetteria (×2)',v:181.69},{n:'Leopoldo Bar (×2)',v:153.60},{n:'Okinaki',v:132.16},{n:'SN Gutierrez',v:126.39},{n:'IFD Judite Comida de V',v:95.52},{n:'Luana de Ipanema',v:87.03},{n:'Armazém e Empório (×3)',v:71.30},{n:'Berrys Iced Food',v:56.49},{n:'Ali Ba Bar Mercearias',v:51.87},{n:'Pizza Pazza',v:47.80},{n:'CGME Casa de Lanches',v:31.00},{n:"McDonald's",v:30.80},{n:'Starbucks',v:18.90}]},
+  {id:'st-hosp',nome:'Viagem e hospedagem',total:864.38,itens:[{n:'GOL parc 02/03',v:508.51},{n:'AIRBNB parc 04/06',v:304.87},{n:'Lavanderia nas férias (×3)',v:51.00}]},
+  {id:'st-lazer',nome:'Lazer e entretenimento',total:543.60,itens:[{n:'Nintendo eShop',v:389.90},{n:'Ticketmaster parc 02/03',v:153.70}]},
+  {id:'st-paula',nome:'Compras para a Paula',total:212.00,itens:[{n:'Sephora',v:212.00}]},
+  {id:'st-saude',nome:'Saúde',total:90.00,itens:[{n:'Seu Elias Barba Cabelo',v:90.00}]},
+  {id:'st-assin',nome:'Assinaturas',total:256.43,itens:[{n:'Claude Pro (Assinatura)',v:110.00},{n:'Apple.com (×3)',v:46.79},{n:'Spotify',v:40.90},{n:'LinkedIn',v:34.99},{n:'Amazon',v:19.90},{n:'IOF Internacional',v:3.85}]},
+  {id:'st-mob',nome:'Mobilidade urbana',total:153.82,itens:[{n:'JET Patinetes (×22)',v:138.94},{n:'Whoosh (×4)',v:14.88}]},
+  {id:'st-compras',nome:'Compras online',total:147.58,itens:[{n:'MercadoLivre (×3)',v:137.68},{n:'Mercado Livre + (Assinatura)',v:9.90}]},
+  {id:'st-comb',nome:'Combustível',total:100.00,itens:[{n:'Expressa Combustível',v:100.00}]},
+  {id:'st-trab',nome:'Ferramentas de trabalho',total:17.73,itens:[{n:'Namecheap ($3,18 USD)',v:17.08},{n:'IOF Internacional',v:0.60},{n:'Vercel ($0,01 USD)',v:0.05}]},
+  {id:'st-outros',nome:'Outros',total:230.46,itens:[{n:'Piscinas',v:119.46},{n:'Fabiola Barbosa Godinh',v:96.00},{n:'Snapfast',v:15.00}]}
+]};
 const CHEV='<svg viewBox="0 0 12 12"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg>';
 function faturaHtml(fat,span){
   const max=Math.max(...fat.categorias.map(c=>c.total));
@@ -453,7 +485,7 @@ function regChart(id,draw){const el=$(id);if(!el)return;CHARTS.set(id,draw);el._
 function refreshCharts(scope){CHARTS.forEach((draw,id)=>{const el=$(id);if(!el||!el.isConnected||el.offsetParent===null)return;if(scope&&!scope.contains(el))return;if(el._w!==el.clientWidth){el._w=el.clientWidth;draw(false);}});}
 let rT;addEventListener('resize',()=>{clearTimeout(rT);rT=setTimeout(()=>{refreshCharts();moveDock(true);moveSeg(true);},140);});
 
-const SHORT={'Comida e bebida':'Comida','Lazer e entretenimento':'Lazer','Viagem e hospedagem':'Viagem','Ferramentas de trabalho':'Trabalho','Mobilidade urbana':'Mobilidade','Compras online':'Compras','Locação de carros':'Locação'};
+const SHORT={'Compras para a Paula':'Paula','Comida e bebida':'Comida','Lazer e entretenimento':'Lazer','Viagem e hospedagem':'Viagem','Ferramentas de trabalho':'Trabalho','Mobilidade urbana':'Mobilidade','Compras online':'Compras','Locação de carros':'Locação'};
 const shortCat=n=>SHORT[n]||n;
 function arcD(cx,cy,r,a){
   if(a<=.05)return'';const s=-Math.PI/2,e=(a-90)*Math.PI/180;
@@ -522,16 +554,27 @@ const MESES_CFG=[
     receitas:[{key:'salario',label:'Salário (Itaú — recebido em junho)',val:'13.981,77',badge:'auto'},{key:'vr',label:'Vale refeição',val:'990,00',badge:'rep'},{key:'vho',label:'Vale home office',val:'100,00',badge:'rep'},{key:'paula',label:'Paula',val:'1.987,47',badge:'auto'}],
     despesas:[{key:'aluguel',label:'Aluguel',val:'1.883,11',pago:true},{key:'cond',label:'Condomínio',val:'864,73',pago:true},{key:'iptu',label:'IPTU',val:'305,76',pago:true},{key:'internet',label:'Internet + celular',val:'363,77',pago:true},{key:'luz',label:'Luz',val:'393,94',pago:true},{key:'terapia',label:'Terapia',val:'',pago:false,edit:true,ph:'pendente'},{key:'cartao',label:'Fatura cartão Inter',val:'6.148,47',pago:true}]},
 
-  {key:'julho',mesKey:'2026-07',label:'Julho 2026',prefix:'jl',mode:'contas',si:38476.06,sf:27781.34,contasTitle:'Contas de julho',
+  {key:'julho',mesKey:'2026-07',label:'Julho 2026',prefix:'jl',mode:'contas',si:38476.06,sf:27755.56,contasTitle:'Contas de julho',
     faturas:[FATURA_JUNHO],charts:true,chartPfx:'jul',
     receitas:[{key:'salario',label:'Salário (Itaú — recebido em julho)',val:'13.981,77',badge:'auto'},{key:'vr',label:'Vale refeição',val:'990,00',badge:'rep'},{key:'vho',label:'Vale home office',val:'100,00',badge:'rep'},{key:'paula',label:'Paula',val:'1.751,40',badge:'auto'}],
     despesas:[{key:'aluguel',label:'Aluguel',val:'1.883,11',pago:true},{key:'cond',label:'Condomínio',val:'912,28',pago:true},{key:'iptu',label:'IPTU',val:'305,76',pago:true},{key:'luz',label:'Luz',val:'393,94',pago:true},{key:'internet',label:'Internet + celular',val:'363,02',pago:true},{key:'terapia',label:'Terapia',val:'0,00',pago:false},{key:'cartao',label:'Fatura cartão Inter',val:'7.692,21',pago:true}]},
 
-  {key:'agosto',mesKey:'2026-08',label:'Agosto 2026',prefix:'ag',mode:'contas',si:27764.26,sf:122447.52,saldoLabel:'Saldo atual (10/08)',contasTitle:'Contas de agosto',
-    parcial:'10 de agosto',infoAlert:'Falta o valor da terapia. A luz sai em débito automático.',
+  {key:'agosto',mesKey:'2026-08',label:'Agosto 2026',prefix:'ag',mode:'contas',si:27755.56,sf:116616.07,contasTitle:'Contas de agosto',
     faturas:[FATURA_JULHO,FATURA_PERS_JULHO],charts:true,chartPfx:'ago',
-    receitas:[{key:'salario',label:'Salário (Itaú — recebido em julho)',val:'13.981,77',badge:'auto'},{key:'vr',label:'Vale refeição',val:'990,00',badge:'rep'},{key:'vho',label:'Vale home office',val:'100,00',badge:'rep'},{key:'paula',label:'Paula (parcial até 10/08)',val:'1.282,85',badge:'auto'}],
-    despesas:[{key:'aluguel',label:'Aluguel',val:'1.883,11',pago:true},{key:'cond',label:'Condomínio',val:'689,13',pago:true},{key:'iptu',label:'IPTU',val:'305,76',pago:true},{key:'luz',label:'Luz',val:'374,93',pago:false},{key:'internet',label:'Internet + celular',val:'363,77',pago:true},{key:'terapia',label:'Terapia',val:'',pago:false,edit:true,ph:'pendente'},{key:'cartao',label:'Fatura Inter + Personnalité',val:'4.013,68',pago:true}]},
+    receitas:[{key:'salario',label:'Salário (Itaú — recebido em julho)',val:'13.981,77',badge:'auto'},{key:'vr',label:'Vale refeição',val:'990,00',badge:'rep'},{key:'vho',label:'Vale home office',val:'100,00',badge:'rep'},{key:'paula',label:'Paula',val:'1.633,05',badge:'auto'}],
+    despesas:[{key:'aluguel',label:'Aluguel',val:'1.883,11',pago:true},{key:'cond',label:'Condomínio',val:'689,13',pago:true},{key:'iptu',label:'IPTU',val:'305,76',pago:true},{key:'luz',label:'Luz',val:'374,93',pago:true},{key:'internet',label:'Internet + celular',val:'363,77',pago:true},{key:'terapia',label:'Terapia',val:'0,00',pago:false},{key:'cartao',label:'Fatura Inter + Personnalité',val:'4.013,68',pago:true}]},
+
+  {key:'setembro',mesKey:'2026-09',label:'Setembro 2026',prefix:'st',mode:'contas',si:116616.07,sf:104528.53,contasTitle:'Contas de setembro',
+    infoAlert:'A luz soma duas contas da CEMIG: a de agosto (R$ 357,99, débito automático em 11/09) e a de setembro (R$ 354,00, Pix em 10/09). A terapia inclui R$ 1.260,00 de dois meses atrasados.',
+    faturas:[FATURA_AGOSTO],charts:true,chartPfx:'set',
+    receitas:[{key:'salario',label:'Salário (Itaú — recebido em agosto)',val:'13.981,77',badge:'auto'},{key:'vr',label:'Vale refeição',val:'990,00',badge:'rep'},{key:'vho',label:'Vale home office',val:'100,00',badge:'rep'},{key:'paula',label:'Paula',val:'1.976,80',badge:'auto'}],
+    despesas:[{key:'aluguel',label:'Aluguel',val:'1.883,11',pago:true},{key:'cond',label:'Condomínio',val:'819,54',pago:true},{key:'iptu',label:'IPTU',val:'305,76',pago:true},{key:'luz',label:'Luz (contas de agosto e setembro)',val:'711,99',pago:true},{key:'internet',label:'Internet + celular',val:'366,65',pago:true},{key:'terapia',label:'Terapia (Diálogo Psi)',val:'1.440,00',pago:true},{key:'cartao',label:'Fatura Inter + Personnalité',val:'6.760,10',pago:true}]},
+
+  {key:'outubro',mesKey:'2026-10',label:'Outubro 2026',prefix:'ou',mode:'contas',si:104528.53,sf:97993.08,saldoLabel:'Saldo atual (10/10)',contasTitle:'Contas de outubro',
+    parcial:'10 de outubro',infoAlert:'Falta o valor da terapia. A luz de outubro já foi paga por Pix em 10/10, mas a CEMIG ainda mostra a conta em débito automático: confira se não vai sair duas vezes.',
+    faturas:[FATURA_SETEMBRO],charts:true,chartPfx:'out',
+    receitas:[{key:'salario',label:'Salário (Itaú — recebido em setembro, com férias)',val:'16.552,21',badge:'auto'},{key:'vr',label:'Vale refeição',val:'990,00',badge:'rep'},{key:'vho',label:'Vale home office',val:'100,00',badge:'rep'},{key:'paula',label:'Paula (parcial até 10/10)',val:'1.121,00',badge:'auto'}],
+    despesas:[{key:'aluguel',label:'Aluguel (agendado para 13/10)',val:'1.883,11',pago:true},{key:'cond',label:'Condomínio',val:'786,09',pago:true},{key:'iptu',label:'IPTU',val:'305,76',pago:true},{key:'luz',label:'Luz',val:'329,73',pago:true},{key:'internet',label:'Internet + celular',val:'363,77',pago:true},{key:'terapia',label:'Terapia',val:'',pago:false,edit:true,ph:'pendente'},{key:'cartao',label:'Fatura cartão Inter',val:'5.766,10',pago:true}]},
 ];
 const MESES_BY_KEY=Object.fromEntries(MESES_CFG.map(m=>[m.key,m]));
 const prevCfg=cfg=>MESES_CFG[MESES_CFG.indexOf(cfg)-1];
